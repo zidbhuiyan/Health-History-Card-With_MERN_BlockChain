@@ -1,0 +1,21 @@
+.bgVacStf {
+    background: url(https://ichef.bbci.co.uk/news/976/cpsprodpb/CAF2/production/_122945915_gettyimages-1291715271.jpg)
+      no-repeat;
+    background-size: cover;
+    min-height: 90vh;
+    width: 100%;
+  }
+
+  .bgvsp {
+    background: rgb(19, 28, 39);
+    background: linear-gradient(
+      0deg,
+      rgba(185, 186, 184, 1) 0%,
+      rgba(19, 28, 39, 1) 0%,
+      rgba(181, 177, 174, 1) 100%,
+      rgba(29, 28, 27, 1) 100%
+    );
+    background-size: cover;
+    min-height: 90vh;
+    width: 100%;
+  }

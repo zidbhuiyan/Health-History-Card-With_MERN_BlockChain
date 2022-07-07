@@ -1,0 +1,13 @@
+.bgpc {
+    background: rgb(19, 28, 39);
+    background: linear-gradient(
+      0deg,
+      rgba(185, 186, 184, 1) 0%,
+      rgba(19, 28, 39, 1) 0%,
+      rgba(181, 177, 174, 1) 100%,
+      rgba(29, 28, 27, 1) 100%
+    );
+    background-size: cover;
+    min-height: 90vh;
+    width: 100%;
+  }

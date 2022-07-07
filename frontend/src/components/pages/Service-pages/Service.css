@@ -1,0 +1,65 @@
+.bgs {
+  background: rgb(185, 186, 184);
+  background: linear-gradient(
+    0deg,
+    rgba(185, 186, 184, 1) 0%,
+    rgba(19, 28, 39, 1) 0%,
+    rgba(181, 177, 174, 1) 100%,
+    rgba(29, 28, 27, 1) 100%
+  );
+  background-size: cover;
+  min-height: 90vh;
+  width: 100%;
+}
+
+.heading {
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+.heading span {
+  font-size: 4rem;
+
+  color: black;
+
+  padding: 0.1rem 0.1rem;
+}
+
+.heading span.space {
+  background: none;
+}
+
+.services .box-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1.5rem;
+  gap: 1rem;
+}
+
+.services .box-container .box {
+  flex: 1 1 25rem;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  background: white;
+}
+
+.services .box-container .box i {
+  padding: 1rem;
+  font-size: 2rem;
+}
+
+.services .box-container .box h3 {
+  font-size: 2rem;
+  color: #221044;
+}
+
+.services .box-container .box p {
+  font-size: 1.5rem;
+  color: #221044;
+  padding: 1rem 0;
+}
+
+.services .box-container .box:hover {
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+}

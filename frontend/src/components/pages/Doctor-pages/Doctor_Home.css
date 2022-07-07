@@ -1,0 +1,102 @@
+.bgdoctor {
+  background: url(https://images.indianexpress.com/2022/01/doctor-759-4-1.jpg)
+    no-repeat;
+  background-size: cover;
+  min-height: 90vh;
+  width: 100%;
+}
+
+.bgdp {
+  background: rgb(19, 28, 39);
+  background: linear-gradient(
+    0deg,
+    rgba(185, 186, 184, 1) 0%,
+    rgba(19, 28, 39, 1) 0%,
+    rgba(181, 177, 174, 1) 100%,
+    rgba(29, 28, 27, 1) 100%
+  );
+  background-size: cover;
+  min-height: 90vh;
+  width: 100%;
+}
+.card {
+  background: whitesmoke;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 10px;
+  margin-top: 15px;
+  padding: 1rem,1rem;
+  text-align: center;
+  font-size: large;
+}
+
+.card .suggestionDiv{
+  background: wheat;
+}
+
+.card .suggestionTittle{
+  background: beige;
+}
+
+.suggheading{
+  margin-top: 10px;
+  padding: 0.3rem;
+}
+
+.box-container{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem 10%;
+}
+
+.box-container .box {
+  flex: 1 1 30rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+  background: white;
+}
+
+.box-container .box .content {
+  padding: 1rem;
+}
+
+.box-container .box .box {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  color: #221044;
+  margin: 0.6rem 0;
+  border: 0.1rem solid rgba(0, 0, 0, 0.3);
+  text-transform: none;
+}
+
+.box-container .box .content .row form {
+  flex: 1 1 50rem;
+  padding: 2rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+}
+
+ .box-container .box .content .row form .inputBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+ .box-container .box .content .row form .inputBox input,
+ .row form textarea {
+  width: 60%;
+  margin: 0.7rem 0;
+  padding: 0.7rem;
+  font-size: 1rem;
+  color: #333;
+  background: #f7f7f7;
+  text-transform: none;
+}
+
+ .box-container .box .content .row form textarea {
+  height: 15rem;
+  resize: none;
+  width: 100%;
+}
