@@ -268,12 +268,12 @@ function Registration_Form() {
         <div class="user-details" >
           <div class="input-box">
             <span class="details">First Name</span>
-            <input type="text" name="firstname" value={user.firstname} placeholder="Enter First name" id="firstname" onChange={ handleChange } required/>
+            <input type="text" name="firstname" value={user.firstname} placeholder="Enter First Name" id="firstname" onChange={ handleChange } required/>
             <p class = "error">{formErrors.firstname}</p>
           </div>
           <div class="input-box">
-            <span class="details">Last name</span>
-            <input type="text" name="lastname" value={user.lastname}  placeholder="Enter Last name" id="lastname" onChange={ handleChange } required/>
+            <span class="details">Last Name</span>
+            <input type="text" name="lastname" value={user.lastname}  placeholder="Enter Last Name" id="lastname" onChange={ handleChange } required/>
             <p class = "error">{formErrors.lastname }</p>
           </div>
           <div class="input-box">

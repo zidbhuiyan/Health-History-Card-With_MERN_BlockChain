@@ -7,11 +7,13 @@ import Doctor_Sugestions_Card from "./pages/Doctor-pages/Doctor_Suggestions_Card
 
 import Web3 from "web3";
 import { Client_ABI, Client_ADDRESS } from "../config";
+import Blood_Transfusion_Card from "./pages/Report-Staff-pages/Blood_Transfusion";
 
 function Info_Navbar(props) {
   const [account, setAccount] = useState();
 
   const [doctorSuggestionsData, setdoctorSuggestionsData] = useState([]);
+  const [booldTransfusionData, setBooldTransfusionData] = useState([]);
 
   const [client, setClient] = useState([]);
 
@@ -23,6 +25,8 @@ function Info_Navbar(props) {
   }, []);
 
   const onPageLoading = async () => {
+    ///////WEB3////////////////////////
+
     const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
 
     const accounts = await web3.eth.getAccounts();
@@ -34,6 +38,9 @@ function Info_Navbar(props) {
 
     console.log(client);
 
+    ///////WEB3////////////////////////
+
+    //////////Doctor Suggestions start////////
     const suggestionsCount = await client.methods
       .getSuggestionsDataCount()
       .call();
@@ -54,7 +61,7 @@ function Info_Navbar(props) {
 
       console.log(props.user.hid);
 
-      //Compare here with hid
+      //Compare here with hid///
 
       if (hid == props.user.hid) {
         setdoctorSuggestionsData((prevState) => [
@@ -72,33 +79,62 @@ function Info_Navbar(props) {
         ]);
       }
     }
+
+    //////////Doctor Suggestions end////////
+
+    //////////Blood Transfusion start////////
+
+    const booldtransfusionCount = await client.methods
+      .getBooldtransfusionCount()
+      .call();
+    console.log("booldtransfusionCount", booldtransfusionCount);
+
+    for (var i = 1; i <= booldtransfusionCount; i++) {
+      const dataInfo = await client.methods.getBooldtransfusionData(i).call();
+      const Id = dataInfo[0];
+      const firstname = dataInfo[1];
+      const lastname = dataInfo[2];
+      const Rregid = dataInfo[3];
+      const hospitalname = dataInfo[4];
+      const booldtransfusionAmount = dataInfo[5];
+      const booldtransfusionTime = dataInfo[6];
+      const hid = dataInfo[7];
+
+      //Compare here with hid///
+
+      if (hid == props.user.hid) {
+        setBooldTransfusionData((prevState) => [
+          ...prevState,
+          {
+            Id: Id,
+            firstname: firstname,
+            lastname: lastname,
+            Rregid: Rregid,
+            hospitalname: hospitalname,
+            booldtransfusionAmount: booldtransfusionAmount,
+            booldtransfusionTime: booldtransfusionTime,
+            hid: hid,
+          },
+        ]);
+      }
+    }
+    
+
+    //////////Blood Transfusion end////////
   };
+
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   const doctorSuggestionsButton = () => {
-    console.log("set");
-    const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
-    const client = new web3.eth.Contract(Client_ABI, Client_ADDRESS);
-    console.log(client);
-
-    web3.eth.getAccounts().then(function (accounts) {
-      let acc = accounts[0];
-      return client.methods
-        .setSuggestionsData(
-          "Dfirstname",
-          "Dlastname",
-          "Docregid",
-          "hospitalname",
-          "Dsuggestios",
-          "DsuggestiosTime",
-          "1234345678"
-        )
-        .send({ from: acc })
-        .once("receipt", (receipt) => {
-          console.log("success");
-        });
+    navigate("/doctor_suggestion", {
+      state: {
+        user: props.user,
+        userCat: props.userCat,
+        userCatInfo: props.userCatInfo,
+      },
     });
   };
 
@@ -158,8 +194,7 @@ function Info_Navbar(props) {
             </div>
           </>
         );
-      }
-      else if (value == 2) {
+      } else if (value == 2) {
         return (
           <>
             <div>
@@ -246,7 +281,7 @@ function Info_Navbar(props) {
                 Add New Suggestions
               </Button>
             </h1>
-            <h1>Doctors’ Suggestions</h1>
+            <h2>Doctors' Suggestions</h2>
             <div className="doctorSuggestionTab">
               {doctorSuggestionsData
                 .map((doctorSuggestionsData, key) => (
@@ -260,8 +295,7 @@ function Info_Navbar(props) {
             </div>
           </>
         );
-      }
-      else if (value == 7) {
+      } else if (value == 7) {
         return (
           <>
             <div>
@@ -301,7 +335,7 @@ function Info_Navbar(props) {
         return (
           <>
             <div>
-              <h1>Vaccine History</h1>
+              <h2 className="infoHead">Vaccine History</h2>
             </div>
           </>
         );
@@ -309,7 +343,7 @@ function Info_Navbar(props) {
         return (
           <>
             <div>
-              <h1>Personal History</h1>
+              <h2 className="infoHead">Personal History</h2>
             </div>
           </>
         );
@@ -317,7 +351,7 @@ function Info_Navbar(props) {
         return (
           <>
             <div>
-              <h1>Investigation Profile</h1>
+              <h2 className="infoHead">Investigation Profile</h2>
             </div>
           </>
         );
@@ -325,7 +359,7 @@ function Info_Navbar(props) {
         return (
           <>
             <div>
-              <h1>Prescriptions</h1>
+              <h2 className="infoHead">Prescriptions</h2>
             </div>
           </>
         );
@@ -333,7 +367,7 @@ function Info_Navbar(props) {
         return (
           <>
             <div>
-              <h1>Drug History</h1>
+              <h2 className="infoHead">Drug History</h2>
             </div>
           </>
         );
@@ -341,14 +375,14 @@ function Info_Navbar(props) {
         return (
           <>
             <div>
-              <h1>Family History</h1>
+              <h2 className="infoHead">Family History</h2>
             </div>
           </>
         );
       } else if (value == 6) {
         return (
           <>
-            <h1>Doctors’ Suggestions</h1>
+            <h2 className="infoHead">Doctors' Suggestions</h2>
             <div className="doctorSuggestionTab">
               {doctorSuggestionsData
                 .map((doctorSuggestionsData, key) => (
@@ -362,12 +396,21 @@ function Info_Navbar(props) {
             </div>
           </>
         );
-      }
-      else if (value == 7) {
+      } else if (value == 7) {
         return (
           <>
             <div>
-              <h1>Blood Transfusion History</h1>
+              <h2 className="infoHead">Blood Transfusion History</h2>
+              <div className="booldTransfusionTab">
+              {booldTransfusionData
+                .map((booldTransfusionData, key) => (
+                  <div key={booldTransfusionData.Id}>
+                    
+                    <Blood_Transfusion_Card booldTransfusionData = {booldTransfusionData}/>
+                  </div>
+                ))
+                .reverse()}
+            </div>
             </div>
           </>
         );

@@ -25,7 +25,7 @@ function Search_profile (props){
 
 <div class="container">
   
-  <div class="title">Client Profile</div>
+  <div class="title">Client's Profile</div>
   <div class="content">
     <form>
       <div class="user-details">
@@ -34,7 +34,7 @@ function Search_profile (props){
           <input type="text" name="firstname" value = {location.state.user.firstname} disabled/>
         </div>
         <div class="input-box">
-          <span class="details">Last name</span>
+          <span class="details">Last Name</span>
           <input type="text" name="lastname" value = {location.state.user.lastname}  disabled/>
         </div>
         <div class="input-box">
@@ -60,7 +60,8 @@ function Search_profile (props){
     <div class="title">Medical Information</div>
     <Info_Navbar
     userCat = "doctor"
-    user = {location.state.user}/>  
+    user = {location.state.user}
+    userCatInfo = {location.state.userCatInfo} />  
   </div>
 </div>
 
@@ -118,7 +119,9 @@ function Search_profile (props){
     </form>
     <div class="title">Medical Information</div>
     <Info_Navbar
-    userCat = "reportStaff"/>  
+    userCat = "reportStaff"
+    user = {location.state.user}
+    userCatInfo = {location.state.userCatInfo}/>  
   </div>
 </div>
                 

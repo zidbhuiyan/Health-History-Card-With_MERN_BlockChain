@@ -172,18 +172,18 @@ function Registration_Form_Doctor() {
 
 
 <div class="container">
-    <div class="title">Registar As Doctor</div>
+    <div class="title">Register as Doctor</div>
     <div class="content">
       <form>
         <div class="user-details">
           <div class="input-box">
             <span class="details">First Name</span>
-            <input type="text" name="Dfirstname" value={user.Dfirstname} placeholder="Enter First name" id="Dfirstname" onChange={ handleChange } required/>
+            <input type="text" name="Dfirstname" value={user.Dfirstname} placeholder="Enter First Name" id="Dfirstname" onChange={ handleChange } required/>
             <p class = "error">{formErrors.firstname}</p>
           </div>
           <div class="input-box">
-            <span class="details">Last name</span>
-            <input type="text" name="Dlastname" value={user.Dlastname}  placeholder="Enter Last name" id="Dlastname" onChange={ handleChange } required/>
+            <span class="details">Last Name</span>
+            <input type="text" name="Dlastname" value={user.Dlastname}  placeholder="Enter Last Name" id="Dlastname" onChange={ handleChange } required/>
             <p class = "error">{formErrors.lastname}</p>
           </div>
           <div class="input-box">
@@ -207,8 +207,8 @@ function Registration_Form_Doctor() {
             <p class = "error">{formErrors.phonenumber}</p>
           </div>
           <div class="input-box">
-            <span class="details">Hospital Name</span>
-            <input type="text" name="hospitalname" value={user.hospitalname} placeholder="Enter hospital name" id="hospitalname" onChange={ handleChange } required/>
+            <span class="details">Hospital's Name</span>
+            <input type="text" name="hospitalname" value={user.hospitalname} placeholder="Enter hospital's name" id="hospitalname" onChange={ handleChange } required/>
             <p class = "error">{formErrors.hospitalname}</p>
           </div>
           <div class="input-box">

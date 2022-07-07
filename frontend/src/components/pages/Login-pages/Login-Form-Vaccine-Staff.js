@@ -45,15 +45,15 @@ function Login_Form_Vaccine_Staff(props) {
 
       else if(result == "passwordisIncorrect"){
         swal({
-          title: "Password is Invalid!",
-          text: "Please, Check again",
+          title: "Password is invalid!",
+          text: "Please, check again",
           icon: "warning",
           button: "Okay",
         });
       }
       else if(result == "userDoesNotExist"){
         swal({
-          title: "User Does Not Exist!",
+          title: "User does not exist!",
           text: "Please, Register First",
           icon: "warning",
           button: "Okay",
@@ -71,7 +71,7 @@ function Login_Form_Vaccine_Staff(props) {
 
     <div className="center">
       
-      <h1>Login As Vaccine Staff</h1>
+      <h1>Login as Vaccine Staff</h1>
       <form>
         <div className="txt_field">
           <input type="text" name="Vregid" value={user.Vregid} onChange={handleChange} required/>
@@ -86,7 +86,7 @@ function Login_Form_Vaccine_Staff(props) {
         
         <input type="submit" onClick={handleClick} value="Login"/>
         <div className="signup_link">
-        Not Registered? <Link to='/registration'>Register Here</Link>
+        Not Registered? <Link to='/registration'>Register here</Link>
         </div>
       </form>
     </div>

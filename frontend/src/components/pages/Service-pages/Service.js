@@ -12,7 +12,7 @@ function Service() {
       <div class="bgs">
       <section class="services" id="services">
         <h1 class="heading">
-          <span>s</span>
+          <span>S</span>
           <span>e</span>
           <span>r</span>
           <span>v</span>

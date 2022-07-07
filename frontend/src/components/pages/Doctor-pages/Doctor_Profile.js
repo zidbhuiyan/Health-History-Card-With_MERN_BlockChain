@@ -16,7 +16,7 @@ function Doctor_Profile(props) {
 
 <div class="container">
   
-    <div class="title">Doctor Profile</div>
+    <div class="title">Doctor's Profile</div>
     <div class="content">
     <form>
         <div class="user-details">
@@ -25,7 +25,7 @@ function Doctor_Profile(props) {
             <input type="text" value={props.user.Dfirstname}  disabled/>
           </div>
           <div class="input-box">
-            <span class="details">Last name</span>
+            <span class="details">Last Name</span>
             <input type="text" value={props.user.Dlastname}  disabled/>
           </div>
           <div class="input-box">

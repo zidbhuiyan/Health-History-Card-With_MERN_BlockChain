@@ -69,7 +69,7 @@ function Navbar(props) {
                </li>
                <li>
         
-         <Button onClick={logout} buttonStyle='btn--outline'>Logout</Button>
+         <Button onClick={logout} buttonStyle='btn--outline'>Log out</Button>
        
         </li>
       </>

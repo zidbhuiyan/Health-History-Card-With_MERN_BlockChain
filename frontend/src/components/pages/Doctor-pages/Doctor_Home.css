@@ -31,10 +31,16 @@
 
 .card .suggestionDiv{
   background: wheat;
+  text-align: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 5px;
+
 }
 
-.card .suggestionTittle{
-  background: beige;
+.card .date_time{
+  text-align: right;
+  margin-right: 10px;
 }
 
 .suggheading{

@@ -29,12 +29,12 @@ function Registration() {
           <ul className='cards__items'>
             <CardItem
               src='https://media.istockphoto.com/photos/doctor-clicking-on-a-laptop-before-her-picture-id1292777576?b=1&k=20&m=1292777576&s=170667a&w=0&h=Tg1ASn3aw19DgyqjGaaWqJmPeXiDRaU1LW8c83Y5tbw='
-              text='Register as Report staff'
+              text='Register as Report Staff'
               path='/Register_form_report_staff'
             />
             <CardItem
               src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3onn4JDDWkIph0QkKfRcm1CC9nZiHNDJ_YM-pAoQzaBNW72op7cj2S1zTRPtbHMlqI8Q&usqp=CAU'
-              text='Register as Vaccine staff'
+              text='Register as Vaccine Staff'
               path='/Register_form_vaccine_staff'
             />
           </ul>

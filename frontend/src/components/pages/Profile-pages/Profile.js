@@ -29,7 +29,7 @@ const Profile = (props) => {
             <input type="text" name="firstname" value = {props.user.firstname}  disabled/>
           </div>
           <div class="input-box">
-            <span class="details">Last name</span>
+            <span class="details">Last Name</span>
             <input type="text" name="lastname" value = {props.user.lastname}   disabled/>
           </div>
           <div class="input-box">

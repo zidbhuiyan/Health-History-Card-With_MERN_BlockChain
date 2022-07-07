@@ -73,7 +73,7 @@ function Doctor_Navbar(props) {
 
             <li>
         
-               <Button onClick={logoutClick} buttonStyle='btn--outline'>Logout</Button>
+               <Button onClick={logoutClick} buttonStyle='btn--outline'>Log out</Button>
             
             </li>
             

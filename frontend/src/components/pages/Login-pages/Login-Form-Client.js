@@ -44,16 +44,16 @@ const Login_Form_Client = (props) => {
       }
       else if(result == "passwordisIncorrect"){
         swal({
-          title: "Password is Invalid!",
-          text: "Please, Check again",
+          title: "Password is invalid!",
+          text: "Please, check again",
           icon: "warning",
           button: "Okay",
         });
       }
       else if(result == "userDoesNotExist"){
         swal({
-          title: "User Does Not Exist!",
-          text: "Please, Register First",
+          title: "User does not exist!",
+          text: "Please, register first",
           icon: "warning",
           button: "Okay",
         });
@@ -68,7 +68,7 @@ const Login_Form_Client = (props) => {
       NavPage="other"/>
      
     <div className="center">
-      <h1>Login As Client</h1>
+      <h1>Login as Client</h1>
       <form>
         <div className="txt_field">
           <input type="text" name="hid" value={user.hid} onChange={handleChange} required/>
@@ -83,7 +83,7 @@ const Login_Form_Client = (props) => {
         
         <input type="submit" onClick={handleClick} value="Login"/>
         <div className="signup_link">
-        Not Registered? <Link to='/registration'>Register Here</Link>
+        Not Registered? <Link to='/registration'>Register here</Link>
         </div>
       </form>
     </div>

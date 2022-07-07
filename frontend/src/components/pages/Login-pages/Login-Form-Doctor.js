@@ -48,16 +48,16 @@ function Login_Form_Doctor(props) {
 
       else if(result == "passwordisIncorrect"){
         swal({
-          title: "Password is Invalid!",
-          text: "Please, Check again",
+          title: "Password is invalid!",
+          text: "Please, check again",
           icon: "warning",
           button: "Okay",
         });
       }
       else if(result == "userDoesNotExist"){
         swal({
-          title: "User Does Not Exist!",
-          text: "Please, Register First",
+          title: "User does not exist!",
+          text: "Please, register first",
           icon: "warning",
           button: "Okay",
         });
@@ -75,7 +75,7 @@ function Login_Form_Doctor(props) {
 
     <div className="center">
       
-      <h1>Login As Doctor</h1>
+      <h1>Login as Doctor</h1>
       <form>
         <div className="txt_field">
           <input type="text" name="Docregid" value={user.Docregid} onChange={handleChange} required/>
@@ -90,7 +90,7 @@ function Login_Form_Doctor(props) {
         
         <input type="submit" onClick={handleClick} value="Login"/>
         <div className="signup_link">
-        Not Registered? <Link to='/registration'>Register Here</Link>
+        Not Registered? <Link to='/registration'>Register here</Link>
         </div>
       </form>
     </div>

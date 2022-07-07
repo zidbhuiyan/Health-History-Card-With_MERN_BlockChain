@@ -8,6 +8,9 @@ import axios from 'axios';
 import swal from 'sweetalert';
 import {useNavigate } from 'react-router-dom';
 
+import Web3 from "web3";
+import { Client_ABI, Client_ADDRESS } from "../../../config";
+
 function Doctor_Sugestions( props ) {
 
     const navigate = useNavigate();
@@ -41,21 +44,29 @@ function Doctor_Sugestions( props ) {
 
         event.preventDefault();
 
-        const newSuggestions = {
-            hid: location.state.user.hid,
-            Dfirstname: props.user.Dfirstname,
-            Dlastname: props.user.Dlastname,
-            Docregid: props.user.Docregid,
-            hospitalname: props.user.hospitalname,
-            Dsuggestions: input.Dsuggestions
-          }
+        const date = new Date().toLocaleString();
+    console.log(date);
 
-          console.log(newSuggestions);
-
-
-    axios.post('http://localhost:3001/doctorSuggestion',newSuggestions).then(res => {
-        if(res.data.message == "suggestionsupdated"){
-            swal({
+        console.log("set");
+        const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
+        const client = new web3.eth.Contract(Client_ABI, Client_ADDRESS);
+        console.log(client);
+    
+        web3.eth.getAccounts().then(function (accounts) {
+          let acc = accounts[0];
+          return client.methods
+            .setSuggestionsData(
+              props.user.Dfirstname,
+              props.user.Dlastname,
+              props.user.Docregid,
+              props.user.hospitalname,
+              input.Dsuggestions,
+              date,
+              location.state.user.hid
+            )
+            .send({ from: acc })
+            .then((done) => {
+              swal({
                 title: "Suggestions Updated!",
                 icon: "success",
                 button: "Okay",
@@ -70,11 +81,9 @@ function Doctor_Sugestions( props ) {
                   });
                 }
               });
-        }
-})
-
-
-        
+            });
+        });
+ 
      }
   
   return (

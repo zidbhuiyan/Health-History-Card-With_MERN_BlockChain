@@ -101,7 +101,7 @@ function Contact() {
       <div class="bgc">
       <div class="contact" id="contact">
         <h1 class="heading">
-          <span>c</span>
+          <span>C</span>
           <span>o</span>
           <span>n</span>
           <span>t</span>
@@ -127,7 +127,7 @@ function Contact() {
                       name= "name"
                       type="text"
                       value={input.name}
-                      placeholder="Enter You Name"
+                      placeholder="Enter your name"
                       id="name"
                       required
                     />  
@@ -144,7 +144,7 @@ function Contact() {
                       name= "email"
                       type="email"
                       value={input.email}
-                      placeholder="Enter Your E-mail"
+                      placeholder="Enter your E-mail"
                       id="email"
                       required
                     />
@@ -152,7 +152,7 @@ function Contact() {
                   </div>
                   <textarea onChange ={handleChange}
                     name= "message"
-                    placeholder="Please, type Your message here"
+                    placeholder="Please, type your message here..."
                     value={input.message}
                     cols="30"
                     rows="10"

@@ -23,7 +23,7 @@ const Print_card = (props) => {
 
 <div class="container">
   
-  <div class="title">Health Card</div>
+  <div class="title"></div>
   <div class="content">
       <div ref={componentRef} class="card_container">
 
@@ -31,7 +31,7 @@ const Print_card = (props) => {
                 <div class="font">
                     <div class="top">
                         <div class="card_tittle">
-                            Health Card
+                            Medical History Card
                         </div>
                         <img src="https://static.vecteezy.com/system/resources/previews/000/566/937/large_2x/vector-person-icon.jpg" alt='Photo'/>
                     </div>
