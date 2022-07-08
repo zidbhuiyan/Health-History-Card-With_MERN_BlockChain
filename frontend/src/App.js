@@ -29,6 +29,7 @@ import Doctor_Sugestions from './components/pages/Doctor-pages/Doctor_Suggestion
 
 import Web3 from "web3";
 import { Client_ABI, Client_ADDRESS } from "./config";
+import Blood_Transfusion from './components/pages/Report-Staff-pages/Blood_Transfusion';
 
 
 function App() {
@@ -88,6 +89,7 @@ function App() {
 
         <Route path='/report_staff_home' element={loginUser && loginUser._id && loginUser.Rregid ? <Report_Staff_Home user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
         <Route path='/report_staff_profile' element={loginUser && loginUser._id && loginUser.Rregid ? <Report_Staff_Profile user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
+        <Route path='/blood_transfusion' element={loginUser && loginUser._id && loginUser.Rregid ? <Blood_Transfusion user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
 
         <Route path='/vaccine_staff_home' element={ loginUser && loginUser._id && loginUser.Vregid ? <Vaccine_Staff_Home user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
         <Route path='/vaccine_staff_profile' element={ loginUser && loginUser._id && loginUser.Vregid ?<Vaccine_Staff_Profile user = {loginUser}/> : <Navigate to ='/login' replace/>}/>

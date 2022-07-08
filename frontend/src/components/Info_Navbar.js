@@ -7,13 +7,15 @@ import Doctor_Sugestions_Card from "./pages/Doctor-pages/Doctor_Suggestions_Card
 
 import Web3 from "web3";
 import { Client_ABI, Client_ADDRESS } from "../config";
-import Blood_Transfusion_Card from "./pages/Report-Staff-pages/Blood_Transfusion";
+import Blood_Transfusion_Card from "./pages/Report-Staff-pages/Blood_Transfusion_Card";
+import Vaccine_History_Card from "./pages/Vaccine-Staff-pages/Vaccine_History_Card";
 
 function Info_Navbar(props) {
   const [account, setAccount] = useState();
 
   const [doctorSuggestionsData, setdoctorSuggestionsData] = useState([]);
   const [booldTransfusionData, setBooldTransfusionData] = useState([]);
+  const [vaccineData, setVaccineData] = useState([]);
 
   const [client, setClient] = useState([]);
 
@@ -39,6 +41,53 @@ function Info_Navbar(props) {
     console.log(client);
 
     ///////WEB3////////////////////////
+
+    //////////Vaccine History start////////
+
+    const vaccineCount = await client.methods.getVaccineCount().call();
+    console.log("vaccineCount", vaccineCount);
+
+    for (var i = 1; i <= vaccineCount; i++) {
+      const staffDataInfo = await client.methods
+        .getVaccineStaffData(i)
+        .call();
+      const Id = staffDataInfo[0];
+      const firstname = staffDataInfo[1];
+      const lastname = staffDataInfo[2];
+      const Rregid = staffDataInfo[3];
+      const hospitalname = staffDataInfo[4];
+
+      console.log("staffDataInfo",staffDataInfo);
+
+      const dataInfo = await client.methods.getVaccineData(i).call();
+      const vaccineName = dataInfo[0];
+      const vaccineDoseNum = dataInfo[1];
+      const vaccineTime = dataInfo[2];
+      const hid = dataInfo[3];
+
+      console.log("dataInfo",dataInfo);
+
+      //Compare here with hid///
+
+      if (hid == props.user.hid) {
+        setVaccineData((prevState) => [
+          ...prevState,
+          {
+            Id: Id,
+            firstname: firstname,
+            lastname: lastname,
+            Rregid: Rregid,
+            hospitalname: hospitalname,
+            vaccineName: vaccineName,
+            vaccineDoseNum: vaccineDoseNum,
+            vaccineTime: vaccineTime,
+            hid: hid,
+          },
+        ]);
+      }
+    }
+
+    //////////Vaccine History End////////
 
     //////////Doctor Suggestions start////////
     const suggestionsCount = await client.methods
@@ -90,15 +139,20 @@ function Info_Navbar(props) {
     console.log("booldtransfusionCount", booldtransfusionCount);
 
     for (var i = 1; i <= booldtransfusionCount; i++) {
+      const staffDataInfo = await client.methods
+        .getBooldtransfusionStaffData(i)
+        .call();
+      const Id = staffDataInfo[0];
+      const firstname = staffDataInfo[1];
+      const lastname = staffDataInfo[2];
+      const Rregid = staffDataInfo[3];
+      const hospitalname = staffDataInfo[4];
+
       const dataInfo = await client.methods.getBooldtransfusionData(i).call();
-      const Id = dataInfo[0];
-      const firstname = dataInfo[1];
-      const lastname = dataInfo[2];
-      const Rregid = dataInfo[3];
-      const hospitalname = dataInfo[4];
-      const booldtransfusionAmount = dataInfo[5];
-      const booldtransfusionTime = dataInfo[6];
-      const hid = dataInfo[7];
+      const booldtransfusionAmount = dataInfo[0];
+      const booldtransfusionType = dataInfo[1];
+      const booldtransfusionTime = dataInfo[2];
+      const hid = dataInfo[3];
 
       //Compare here with hid///
 
@@ -112,22 +166,24 @@ function Info_Navbar(props) {
             Rregid: Rregid,
             hospitalname: hospitalname,
             booldtransfusionAmount: booldtransfusionAmount,
+            booldtransfusionType: booldtransfusionType,
             booldtransfusionTime: booldtransfusionTime,
             hid: hid,
           },
         ]);
       }
     }
-    
 
     //////////Blood Transfusion end////////
   };
-
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
+  /////////////////Buttons Start/////////////////
+
+  //////////Doctor Suggestions Button start////////
   const doctorSuggestionsButton = () => {
     navigate("/doctor_suggestion", {
       state: {
@@ -138,13 +194,44 @@ function Info_Navbar(props) {
     });
   };
 
+  //////////Doctor Suggestions end////////
+
+  //////////Blood Transfusion start////////
+
+  const bloodTransfusionButton = () => {
+    navigate("/blood_transfusion", {
+      state: {
+        user: props.user,
+        userCat: props.userCat,
+        userCatInfo: props.userCatInfo,
+      },
+    });
+  };
+
+  //////////Blood Transfusion end////////
+
+  /////////////////Buttons end/////////////////
+
   if (props.userCat === "vaccineStaff") {
     function TabPanel() {
       if (value == 0) {
         return (
           <>
             <div>
-              <h1> Vaccine History </h1>
+              <div>
+              <h2 className="infoHead">Vaccine History</h2>
+              <div className="scorllTab">
+                {vaccineData
+                  .map((vaccineData, key) => (
+                    <div key={vaccineData.Id}>
+                      <Vaccine_History_Card vaccineData={vaccineData}
+                      />
+                     
+                    </div>
+                  ))
+                  .reverse()}
+              </div>
+            </div>
             </div>
           </>
         );
@@ -197,8 +284,24 @@ function Info_Navbar(props) {
       } else if (value == 2) {
         return (
           <>
+            <h1>
+              <Button onClick={bloodTransfusionButton}>
+                Add new blood transfusion record
+              </Button>
+            </h1>
             <div>
-              <h1>Blood Transfusion History</h1>
+              <h2 className="infoHead">Blood Transfusion History</h2>
+              <div className="scorllTab">
+                {booldTransfusionData
+                  .map((booldTransfusionData, key) => (
+                    <div key={booldTransfusionData.Id}>
+                      <Blood_Transfusion_Card
+                        booldTransfusionData={booldTransfusionData}
+                      />
+                    </div>
+                  ))
+                  .reverse()}
+              </div>
             </div>
           </>
         );
@@ -228,10 +331,23 @@ function Info_Navbar(props) {
       if (value == 0) {
         return (
           <>
+          <div>
             <div>
-              <h1>Vaccine History</h1>
+            <h2 className="infoHead">Vaccine History</h2>
+            <div className="scorllTab">
+              {vaccineData
+                .map((vaccineData, key) => (
+                  <div key={vaccineData.Id}>
+                    <Vaccine_History_Card vaccineData={vaccineData}
+                    />
+                   
+                  </div>
+                ))
+                .reverse()}
             </div>
-          </>
+          </div>
+          </div>
+        </>
         );
       } else if (value == 1) {
         return (
@@ -282,7 +398,7 @@ function Info_Navbar(props) {
               </Button>
             </h1>
             <h2>Doctors' Suggestions</h2>
-            <div className="doctorSuggestionTab">
+            <div className="scorllTab">
               {doctorSuggestionsData
                 .map((doctorSuggestionsData, key) => (
                   <div key={doctorSuggestionsData.Id}>
@@ -299,7 +415,18 @@ function Info_Navbar(props) {
         return (
           <>
             <div>
-              <h1>Blood Transfusion History</h1>
+              <h2 className="infoHead">Blood Transfusion History</h2>
+              <div className="scorllTab">
+                {booldTransfusionData
+                  .map((booldTransfusionData, key) => (
+                    <div key={booldTransfusionData.Id}>
+                      <Blood_Transfusion_Card
+                        booldTransfusionData={booldTransfusionData}
+                      />
+                    </div>
+                  ))
+                  .reverse()}
+              </div>
             </div>
           </>
         );
@@ -335,7 +462,20 @@ function Info_Navbar(props) {
         return (
           <>
             <div>
+              <div>
               <h2 className="infoHead">Vaccine History</h2>
+              <div className="scorllTab">
+                {vaccineData
+                  .map((vaccineData, key) => (
+                    <div key={vaccineData.Id}>
+                      <Vaccine_History_Card vaccineData={vaccineData}
+                      />
+                     
+                    </div>
+                  ))
+                  .reverse()}
+              </div>
+            </div>
             </div>
           </>
         );
@@ -383,7 +523,7 @@ function Info_Navbar(props) {
         return (
           <>
             <h2 className="infoHead">Doctors' Suggestions</h2>
-            <div className="doctorSuggestionTab">
+            <div className="scorllTab">
               {doctorSuggestionsData
                 .map((doctorSuggestionsData, key) => (
                   <div key={doctorSuggestionsData.Id}>
@@ -401,16 +541,17 @@ function Info_Navbar(props) {
           <>
             <div>
               <h2 className="infoHead">Blood Transfusion History</h2>
-              <div className="booldTransfusionTab">
-              {booldTransfusionData
-                .map((booldTransfusionData, key) => (
-                  <div key={booldTransfusionData.Id}>
-                    
-                    <Blood_Transfusion_Card booldTransfusionData = {booldTransfusionData}/>
-                  </div>
-                ))
-                .reverse()}
-            </div>
+              <div className="scorllTab">
+                {booldTransfusionData
+                  .map((booldTransfusionData, key) => (
+                    <div key={booldTransfusionData.Id}>
+                      <Blood_Transfusion_Card
+                        booldTransfusionData={booldTransfusionData}
+                      />
+                    </div>
+                  ))
+                  .reverse()}
+              </div>
             </div>
           </>
         );
