@@ -24,7 +24,7 @@ import Report_Staff_Profile from './components/pages/Report-Staff-pages/Report_S
 import Vaccine_Staff_Home from './components/pages/Vaccine-Staff-pages/Vaccine_Staff_Home';
 import Vaccine_Staff_Profile from './components/pages/Vaccine-Staff-pages/Vaccine_Staff_Profile';
 import Search_profile from './components/pages/Search-profile/Search_profile';
-import Vaccine_Staff_Add_Vaccine from './components/pages/Vaccine-Staff-pages/Vaccine_Staff_Add_Vaccine';
+import Vaccine_History from './components/pages/Vaccine-Staff-pages/Vaccine_History';
 import Doctor_Sugestions from './components/pages/Doctor-pages/Doctor_Suggestions';
 
 import Web3 from "web3";
@@ -93,7 +93,7 @@ function App() {
 
         <Route path='/vaccine_staff_home' element={ loginUser && loginUser._id && loginUser.Vregid ? <Vaccine_Staff_Home user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
         <Route path='/vaccine_staff_profile' element={ loginUser && loginUser._id && loginUser.Vregid ?<Vaccine_Staff_Profile user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
-        <Route path='/vaccine_staff_add_vaccine' element={ loginUser && loginUser._id && loginUser.Vregid ?<Vaccine_Staff_Add_Vaccine/> : <Navigate to ='/login' replace/>}/>
+        <Route path='/vaccine_history' element={ loginUser && loginUser._id && loginUser.Vregid ?<Vaccine_History user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
 
         
         <Route path='/profile' element={loginUser && loginUser._id && loginUser.hid ? <Profile user = {loginUser} /> : <Navigate to ='/login' replace/>}/>

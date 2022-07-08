@@ -180,7 +180,9 @@ function Search_profile (props){
     </form>
     <div class="title">Medical Information</div>
     <Info_Navbar
-    userCat = "vaccineStaff"/>  
+    userCat = "vaccineStaff"
+    user = {location.state.user}
+    userCatInfo = {location.state.userCatInfo}/>  
   </div>
 </div>
 

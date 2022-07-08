@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../../App.css";
 import Footer from "../../Footer";
-import Doctor_Navbar from "./Report_Staff_Navbar";
 import "./Report_Staff_Home.css";
 import { useLocation } from "react-router-dom";
 import swal from "sweetalert";

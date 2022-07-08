@@ -1,7 +1,7 @@
 export const Client_ADDRESS =
-  "0xA6B51457C7B6bFD3e654BeC0cDfec16c91B5da23";
+  "0xdC466b668ffEf80b02c68DFab8a0A72DAbC16B24";
 
-export const Client_ABI =  [
+export const Client_ABI = [
   {
     "inputs": [],
     "payable": false,
@@ -83,6 +83,11 @@ export const Client_ABI =  [
       },
       {
         "internalType": "string",
+        "name": "_vaccineDisease",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
         "name": "_vaccineDoseNum",
         "type": "string"
       },
@@ -129,6 +134,11 @@ export const Client_ABI =  [
     ],
     "name": "getVaccineData",
     "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
       {
         "internalType": "string",
         "name": "",

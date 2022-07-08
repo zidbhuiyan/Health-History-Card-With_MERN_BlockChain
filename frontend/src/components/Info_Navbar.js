@@ -61,9 +61,10 @@ function Info_Navbar(props) {
 
       const dataInfo = await client.methods.getVaccineData(i).call();
       const vaccineName = dataInfo[0];
-      const vaccineDoseNum = dataInfo[1];
-      const vaccineTime = dataInfo[2];
-      const hid = dataInfo[3];
+      const vaccineDisease = dataInfo[1];
+      const vaccineDoseNum = dataInfo[2];
+      const vaccineTime = dataInfo[3];
+      const hid = dataInfo[4];
 
       console.log("dataInfo",dataInfo);
 
@@ -79,6 +80,7 @@ function Info_Navbar(props) {
             Rregid: Rregid,
             hospitalname: hospitalname,
             vaccineName: vaccineName,
+            vaccineDisease:vaccineDisease,
             vaccineDoseNum: vaccineDoseNum,
             vaccineTime: vaccineTime,
             hid: hid,
@@ -210,6 +212,20 @@ function Info_Navbar(props) {
 
   //////////Blood Transfusion end////////
 
+    //////////vaccine start////////
+
+    const vaccineButton = () => {
+      navigate("/vaccine_history", {
+        state: {
+          user: props.user,
+          userCat: props.userCat,
+          userCatInfo: props.userCatInfo,
+        },
+      });
+    };
+  
+    //////////vaccine end////////
+
   /////////////////Buttons end/////////////////
 
   if (props.userCat === "vaccineStaff") {
@@ -217,6 +233,11 @@ function Info_Navbar(props) {
       if (value == 0) {
         return (
           <>
+          <h1>
+              <Button onClick={vaccineButton}>
+                Add new vaccine
+              </Button>
+            </h1>
             <div>
               <div>
               <h2 className="infoHead">Vaccine History</h2>

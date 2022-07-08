@@ -81,8 +81,9 @@ const Print_card = (props) => {
       
   </div>
 </div>
-</div>
+
         <Footer/>
+        </div>
       </>
     );
   }

@@ -37,8 +37,8 @@ function Vaccine_History_Card(props) {
         </div>
 
       <div className="vaccineDiv">
-        <h4>Vaccine name:</h4> <p>{props.vaccineData.vaccineName}</p>
-        <h4>Dose number: </h4> <p>{props.vaccineData.vaccineDoseNum}</p>
+        <h4>Vaccine name:</h4> <p>{props.vaccineData.vaccineName} <h5> ({props.vaccineData.vaccineDoseNum}) </h5> </p>
+        <h4>Diseases:</h4> <h5>{props.vaccineData.vaccineDisease}</h5>
       </div>
 
       <div className="vaccinestaffDiv">
