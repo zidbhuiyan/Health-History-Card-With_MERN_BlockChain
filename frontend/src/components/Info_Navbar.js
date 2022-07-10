@@ -9,6 +9,8 @@ import Web3 from "web3";
 import { Client_ABI, Client_ADDRESS } from "../config";
 import Blood_Transfusion_Card from "./pages/Report-Staff-pages/Blood_Transfusion_Card";
 import Vaccine_History_Card from "./pages/Vaccine-Staff-pages/Vaccine_History_Card";
+import Drug_History_Card from "./pages/Doctor-pages/Drugs_History_Card";
+import Family_History_Card from "./pages/Doctor-pages/Family_History_Card";
 
 function Info_Navbar(props) {
   const [account, setAccount] = useState();
@@ -16,6 +18,8 @@ function Info_Navbar(props) {
   const [doctorSuggestionsData, setdoctorSuggestionsData] = useState([]);
   const [booldTransfusionData, setBooldTransfusionData] = useState([]);
   const [vaccineData, setVaccineData] = useState([]);
+  const [drugsData, setDrugsData] = useState([]);
+  const [familyData, setFamilyData] = useState([]);
 
   const [client, setClient] = useState([]);
 
@@ -42,22 +46,102 @@ function Info_Navbar(props) {
 
     ///////WEB3////////////////////////
 
+    //////////Family History start////////
+
+    const familyDataCount = await client.methods
+      .getFamilyDiseaseDataCount()
+      .call();
+    console.log("familyDataCount", familyDataCount);
+
+    for (var i = 1; i <= familyDataCount; i++) {
+      const staffDataInfo = await client.methods
+        .getFamilyDiseaseStaffData(i)
+        .call();
+      const Id = staffDataInfo[0];
+      const Dfirstname = staffDataInfo[1];
+      const Dlastname = staffDataInfo[2];
+      const Docregid = staffDataInfo[3];
+      const hospitalname = staffDataInfo[4];
+
+      const dataInfo = await client.methods.getFamilyDiseaseData(i).call();
+      const Disease = dataInfo[0];
+      const Relation = dataInfo[1];
+      const Time = dataInfo[2];
+      const hid = dataInfo[3];
+
+      //Compare here with hid///
+
+      if (hid == props.user.hid) {
+        setFamilyData((prevState) => [
+          ...prevState,
+          {
+            Id: Id,
+            Dfirstname: Dfirstname,
+            Dlastname: Dlastname,
+            Docregid: Docregid,
+            hospitalname: hospitalname,
+            Disease: Disease,
+            Relation: Relation,
+            Time: Time,
+            hid: hid,
+          },
+        ]);
+      }
+    }
+
+    //////////Family History end////////
+
+    //////////Drugs History start////////
+
+    const drugsCount = await client.methods.getDrugsDataCount().call();
+    console.log("drugsCount", drugsCount);
+
+    for (var i = 1; i <= drugsCount; i++) {
+      const dataInfo = await client.methods.getDrugsData(i).call();
+      const Id = dataInfo[0];
+      const Dfirstname = dataInfo[1];
+      const Dlastname = dataInfo[2];
+      const Docregid = dataInfo[3];
+      const hospitalname = dataInfo[4];
+      const Drugs = dataInfo[5];
+      const DrugTime = dataInfo[6];
+      const hid = dataInfo[7];
+
+      console.log(dataInfo);
+
+      //Compare here with hid///
+
+      if (hid == props.user.hid) {
+        setDrugsData((prevState) => [
+          ...prevState,
+          {
+            Id: Id,
+            Dfirstname: Dfirstname,
+            Dlastname: Dlastname,
+            Docregid: Docregid,
+            hospitalname: hospitalname,
+            Drugs: Drugs,
+            DrugTime: DrugTime,
+            hid: hid,
+          },
+        ]);
+      }
+    }
+
+    //////////Drugs History end////////
+
     //////////Vaccine History start////////
 
     const vaccineCount = await client.methods.getVaccineCount().call();
     console.log("vaccineCount", vaccineCount);
 
     for (var i = 1; i <= vaccineCount; i++) {
-      const staffDataInfo = await client.methods
-        .getVaccineStaffData(i)
-        .call();
+      const staffDataInfo = await client.methods.getVaccineStaffData(i).call();
       const Id = staffDataInfo[0];
       const firstname = staffDataInfo[1];
       const lastname = staffDataInfo[2];
       const Rregid = staffDataInfo[3];
       const hospitalname = staffDataInfo[4];
-
-      console.log("staffDataInfo",staffDataInfo);
 
       const dataInfo = await client.methods.getVaccineData(i).call();
       const vaccineName = dataInfo[0];
@@ -65,8 +149,6 @@ function Info_Navbar(props) {
       const vaccineDoseNum = dataInfo[2];
       const vaccineTime = dataInfo[3];
       const hid = dataInfo[4];
-
-      console.log("dataInfo",dataInfo);
 
       //Compare here with hid///
 
@@ -80,7 +162,7 @@ function Info_Navbar(props) {
             Rregid: Rregid,
             hospitalname: hospitalname,
             vaccineName: vaccineName,
-            vaccineDisease:vaccineDisease,
+            vaccineDisease: vaccineDisease,
             vaccineDoseNum: vaccineDoseNum,
             vaccineTime: vaccineTime,
             hid: hid,
@@ -185,6 +267,32 @@ function Info_Navbar(props) {
 
   /////////////////Buttons Start/////////////////
 
+  /////////Family History Button start////////
+  const familyButton = () => {
+    navigate("/family_history", {
+      state: {
+        user: props.user,
+        userCat: props.userCat,
+        userCatInfo: props.userCatInfo,
+      },
+    });
+  };
+
+  //////////Family History end////////
+
+  //////////Drugs History Button start////////
+  const drugsButton = () => {
+    navigate("/drugs_history", {
+      state: {
+        user: props.user,
+        userCat: props.userCat,
+        userCatInfo: props.userCatInfo,
+      },
+    });
+  };
+
+  //////////Drugs History end////////
+
   //////////Doctor Suggestions Button start////////
   const doctorSuggestionsButton = () => {
     navigate("/doctor_suggestion", {
@@ -212,19 +320,19 @@ function Info_Navbar(props) {
 
   //////////Blood Transfusion end////////
 
-    //////////vaccine start////////
+  //////////vaccine start////////
 
-    const vaccineButton = () => {
-      navigate("/vaccine_history", {
-        state: {
-          user: props.user,
-          userCat: props.userCat,
-          userCatInfo: props.userCatInfo,
-        },
-      });
-    };
-  
-    //////////vaccine end////////
+  const vaccineButton = () => {
+    navigate("/vaccine_history", {
+      state: {
+        user: props.user,
+        userCat: props.userCat,
+        userCatInfo: props.userCatInfo,
+      },
+    });
+  };
+
+  //////////vaccine end////////
 
   /////////////////Buttons end/////////////////
 
@@ -233,26 +341,22 @@ function Info_Navbar(props) {
       if (value == 0) {
         return (
           <>
-          <h1>
-              <Button onClick={vaccineButton}>
-                Add new vaccine
-              </Button>
+            <h1>
+              <Button onClick={vaccineButton}>Add new vaccine</Button>
             </h1>
             <div>
               <div>
-              <h2 className="infoHead">Vaccine History</h2>
-              <div className="scorllTab">
-                {vaccineData
-                  .map((vaccineData, key) => (
-                    <div key={vaccineData.Id}>
-                      <Vaccine_History_Card vaccineData={vaccineData}
-                      />
-                     
-                    </div>
-                  ))
-                  .reverse()}
+                <h2 className="infoHead">Vaccine History</h2>
+                <div className="scorllTab">
+                  {vaccineData
+                    .map((vaccineData, key) => (
+                      <div key={vaccineData.Id}>
+                        <Vaccine_History_Card vaccineData={vaccineData} />
+                      </div>
+                    ))
+                    .reverse()}
+                </div>
               </div>
-            </div>
             </div>
           </>
         );
@@ -352,23 +456,21 @@ function Info_Navbar(props) {
       if (value == 0) {
         return (
           <>
-          <div>
             <div>
-            <h2 className="infoHead">Vaccine History</h2>
-            <div className="scorllTab">
-              {vaccineData
-                .map((vaccineData, key) => (
-                  <div key={vaccineData.Id}>
-                    <Vaccine_History_Card vaccineData={vaccineData}
-                    />
-                   
-                  </div>
-                ))
-                .reverse()}
+              <div>
+                <h2 className="infoHead">Vaccine History</h2>
+                <div className="scorllTab">
+                  {vaccineData
+                    .map((vaccineData, key) => (
+                      <div key={vaccineData.Id}>
+                        <Vaccine_History_Card vaccineData={vaccineData} />
+                      </div>
+                    ))
+                    .reverse()}
+                </div>
+              </div>
             </div>
-          </div>
-          </div>
-        </>
+          </>
         );
       } else if (value == 1) {
         return (
@@ -397,16 +499,36 @@ function Info_Navbar(props) {
       } else if (value == 4) {
         return (
           <>
-            <div>
-              <h1>Drug History</h1>
+            <h1>
+              <Button onClick={drugsButton}>Add New Drugs</Button>
+            </h1>
+            <h2 className="infoHead">Drugs History</h2>
+            <div className="scorllTab">
+              {drugsData
+                .map((drugsData, key) => (
+                  <div key={drugsData.Id}>
+                    <Drug_History_Card drugsData={drugsData} />
+                  </div>
+                ))
+                .reverse()}
             </div>
           </>
         );
       } else if (value == 5) {
         return (
           <>
-            <div>
-              <h1>Family History</h1>
+          <h1>
+              <Button onClick={familyButton}>Add family history</Button>
+            </h1>
+            <h2 className="infoHead">Family History</h2>
+            <div className="scorllTab">
+              {familyData
+                .map((familyData, key) => (
+                  <div key={familyData.Id}>
+                    <Family_History_Card familyData={familyData} />
+                  </div>
+                ))
+                .reverse()}
             </div>
           </>
         );
@@ -484,28 +606,24 @@ function Info_Navbar(props) {
           <>
             <div>
               <div>
-              <h2 className="infoHead">Vaccine History</h2>
-              <div className="scorllTab">
-                {vaccineData
-                  .map((vaccineData, key) => (
-                    <div key={vaccineData.Id}>
-                      <Vaccine_History_Card vaccineData={vaccineData}
-                      />
-                     
-                    </div>
-                  ))
-                  .reverse()}
+                <h2 className="infoHead">Vaccine History</h2>
+                <div className="scorllTab">
+                  {vaccineData
+                    .map((vaccineData, key) => (
+                      <div key={vaccineData.Id}>
+                        <Vaccine_History_Card vaccineData={vaccineData} />
+                      </div>
+                    ))
+                    .reverse()}
+                </div>
               </div>
-            </div>
             </div>
           </>
         );
       } else if (value == 1) {
         return (
           <>
-            <div>
-              <h2 className="infoHead">Personal History</h2>
-            </div>
+            <h2 className="infoHead">Personal History</h2>
           </>
         );
       } else if (value == 2) {
@@ -527,16 +645,30 @@ function Info_Navbar(props) {
       } else if (value == 4) {
         return (
           <>
-            <div>
-              <h2 className="infoHead">Drug History</h2>
+            <h2 className="infoHead">Drugs History</h2>
+            <div className="scorllTab">
+              {drugsData
+                .map((drugsData, key) => (
+                  <div key={drugsData.Id}>
+                    <Drug_History_Card drugsData={drugsData} />
+                  </div>
+                ))
+                .reverse()}
             </div>
           </>
         );
       } else if (value == 5) {
         return (
           <>
-            <div>
-              <h2 className="infoHead">Family History</h2>
+            <h2 className="infoHead">Family History</h2>
+            <div className="scorllTab">
+              {familyData
+                .map((familyData, key) => (
+                  <div key={familyData.Id}>
+                    <Family_History_Card familyData={familyData} />
+                  </div>
+                ))
+                .reverse()}
             </div>
           </>
         );

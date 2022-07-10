@@ -7,8 +7,6 @@ function Blood_Transfusion_Card(props) {
     const tdate = props.booldTransfusionData.booldtransfusionTime
     const transfusionDate = new Date(tdate);
     const date = new Date();
-    console.log("transFusion",transfusionDate);
-    console.log("Now",date);
 
     function getMonthDifference(startDate, endDate) {
         return (
@@ -49,7 +47,7 @@ function Blood_Transfusion_Card(props) {
 
         <div className="date_time">
           <h6>
-            Date & Time (MM/DD/YY): {props.booldTransfusionData.booldtransfusionTime}
+            Date & Time : {props.booldTransfusionData.booldtransfusionTime}
           </h6>
         </div>
       </div>

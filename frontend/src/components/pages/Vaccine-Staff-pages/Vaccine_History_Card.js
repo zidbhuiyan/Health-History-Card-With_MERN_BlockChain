@@ -7,8 +7,6 @@ function Vaccine_History_Card(props) {
     const vdate = props.vaccineData.vaccineTime
     const vaccineDate = new Date(vdate);
     const date = new Date();
-    console.log("transFusion",vaccineDate);
-    console.log("Now",date);
 
     function getMonthDifference(startDate, endDate) {
         return (
@@ -50,7 +48,7 @@ function Vaccine_History_Card(props) {
 
         <div className="date_time">
           <h6>
-            Date & Time (MM/DD/YY): {props.vaccineData.vaccineTime}
+            Date & Time : {props.vaccineData.vaccineTime}
           </h6>
         </div>
       </div>

@@ -24,12 +24,12 @@ import Report_Staff_Profile from './components/pages/Report-Staff-pages/Report_S
 import Vaccine_Staff_Home from './components/pages/Vaccine-Staff-pages/Vaccine_Staff_Home';
 import Vaccine_Staff_Profile from './components/pages/Vaccine-Staff-pages/Vaccine_Staff_Profile';
 import Search_profile from './components/pages/Search-profile/Search_profile';
+
 import Vaccine_History from './components/pages/Vaccine-Staff-pages/Vaccine_History';
 import Doctor_Sugestions from './components/pages/Doctor-pages/Doctor_Suggestions';
-
-import Web3 from "web3";
-import { Client_ABI, Client_ADDRESS } from "./config";
 import Blood_Transfusion from './components/pages/Report-Staff-pages/Blood_Transfusion';
+import Drugs_History from './components/pages/Doctor-pages/Drugs_History';
+import Family_History from './components/pages/Doctor-pages/Family_History';
 
 
 function App() {
@@ -86,6 +86,8 @@ function App() {
         <Route path='/doctor_home' element={loginUser && loginUser._id && loginUser.Docregid ? <Doctor_Home user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
         <Route path='/doctor_profile' element={loginUser && loginUser._id && loginUser.Docregid ? <Doctor_Profile user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
         <Route path='/doctor_suggestion' element={loginUser && loginUser._id && loginUser.Docregid ? <Doctor_Sugestions user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
+        <Route path='/drugs_history' element={loginUser && loginUser._id && loginUser.Docregid ? <Drugs_History user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
+        <Route path='/family_history' element={loginUser && loginUser._id && loginUser.Docregid ? <Family_History user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
 
         <Route path='/report_staff_home' element={loginUser && loginUser._id && loginUser.Rregid ? <Report_Staff_Home user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
         <Route path='/report_staff_profile' element={loginUser && loginUser._id && loginUser.Rregid ? <Report_Staff_Profile user = {loginUser}/> : <Navigate to ='/login' replace/>}/>

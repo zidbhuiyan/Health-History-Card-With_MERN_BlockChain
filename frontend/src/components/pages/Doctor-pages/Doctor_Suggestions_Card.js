@@ -18,7 +18,7 @@ function Doctor_Sugestions_Card(props) {
 
         <div className="date_time">
           <h6>
-            Date & Time (MM/DD/YY) : {props.doctorSuggestionsData.DsuggestiosTime}
+            Date & Time : {props.doctorSuggestionsData.DsuggestiosTime}
           </h6>
         </div>
       </div>

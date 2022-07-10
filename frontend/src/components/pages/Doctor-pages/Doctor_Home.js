@@ -6,8 +6,6 @@ import Doctor_Navbar from './Doctor_Navbar';
 import'./Doctor_Home.css'
 
 function Doctor_Home( props ) {
-
-  console.log(props.user);
   
   return (
     <>

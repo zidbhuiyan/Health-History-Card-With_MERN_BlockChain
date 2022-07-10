@@ -1,5 +1,5 @@
 export const Client_ADDRESS =
-  "0xdC466b668ffEf80b02c68DFab8a0A72DAbC16B24";
+  "0x851f1c4D9986f7Ed88a4bAC68f0E83eA0B354773";
 
 export const Client_ABI = [
   {
@@ -12,6 +12,36 @@ export const Client_ABI = [
     "constant": true,
     "inputs": [],
     "name": "booldtransfusionCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "drugsCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "familyDiseaseCount",
     "outputs": [
       {
         "internalType": "uint256",
@@ -47,6 +77,264 @@ export const Client_ABI = [
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_Dfirstname",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_Dlastname",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_Docregid",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_hospitalname",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_Disease",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_Relation",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_Time",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_hid",
+        "type": "string"
+      }
+    ],
+    "name": "setFamilyDiseaseData",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getFamilyDiseaseDataCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "dataNum",
+        "type": "uint256"
+      }
+    ],
+    "name": "getFamilyDiseaseData",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "dataNum",
+        "type": "uint256"
+      }
+    ],
+    "name": "getFamilyDiseaseStaffData",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_Dfirstname",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_Dlastname",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_Docregid",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_hospitalname",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_Drugs",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_DrugTime",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_hid",
+        "type": "string"
+      }
+    ],
+    "name": "setDrugsData",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getDrugsDataCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "dataNum",
+        "type": "uint256"
+      }
+    ],
+    "name": "getDrugsData",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
       }
     ],
     "payable": false,
