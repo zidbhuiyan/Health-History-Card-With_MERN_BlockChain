@@ -152,10 +152,9 @@ function Info_Navbar(props) {
 
       const dataInfo = await client.methods.getDrugsData(i).call();
       const Drugs = dataInfo[0]; 
-      const DrugsMonth = dataInfo[1];
-      const DrugsDay = dataInfo[2];
-      const DrugTime = dataInfo[3];
-      const hid = dataInfo[4];
+      const DrugsDay = dataInfo[1];
+      const DrugTime = dataInfo[2];
+      const hid = dataInfo[3];
 
       //Compare here with hid///
 
@@ -169,7 +168,6 @@ function Info_Navbar(props) {
             Docregid: Docregid,
             hospitalname: hospitalname,
             Drugs: Drugs,
-            DrugsMonth:DrugsMonth,
             DrugsDay:DrugsDay,
             DrugTime: DrugTime,
             hid: hid,

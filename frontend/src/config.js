@@ -1,5 +1,5 @@
 export const Client_ADDRESS =
-  "0x859Ad2084e97882656285de90eA1a9EB92639bD1";
+  "0x1098962B3DF847ce4a290bAeC09f0b771863DE74";
 
 export const Client_ABI = [
   {
@@ -412,11 +412,6 @@ export const Client_ABI = [
       },
       {
         "internalType": "string",
-        "name": "_DrugsMonth",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
         "name": "_DrugsDay",
         "type": "string"
       },
@@ -463,11 +458,6 @@ export const Client_ABI = [
     ],
     "name": "getDrugsData",
     "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      },
       {
         "internalType": "string",
         "name": "",

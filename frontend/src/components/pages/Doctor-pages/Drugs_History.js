@@ -19,7 +19,6 @@ function Drugs_History(props) {
 
   const [input, setInput] = useState({});
   const [inputDate, setInputDate] = useState({});
-  const [inputMonth, setInputMonth] = useState({});
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -43,20 +42,8 @@ function Drugs_History(props) {
     });
   }
 
-  function handleMonthChange(event) {
-    const { name, value } = event.target;
-
-    setInputMonth((prevInput) => {
-      return {
-        ...prevInput,
-        [name]: value,
-      };
-    });
-  }
-
   const drugsNames = Object.values(input);
   const drugsDate = Object.values(inputDate);
-  const drugsMonth = Object.values(inputMonth);
 
   function addClick(event) {
     event.preventDefault();
@@ -71,7 +58,6 @@ function Drugs_History(props) {
 
     var drugNameStr = JSON.stringify(drugsNames);
     var drugdayStr = JSON.stringify(drugsDate);
-    var drugmontStr = JSON.stringify(drugsMonth);
 
     const date = new Date().toLocaleString();
     console.log(date);
@@ -90,7 +76,6 @@ function Drugs_History(props) {
           props.user.Docregid,
           props.user.hospitalname,
           drugNameStr,
-          drugmontStr,
           drugdayStr,
           date,
           location.state.user.hid
@@ -140,18 +125,6 @@ function Drugs_History(props) {
                         type="text"
                         placeholder="Enter Drug Name"
                         id={"drug" + track}
-                        required
-                      />
-                    </div>
-                    <div class="drug-input-box">
-                      <span class="details">Month:</span>
-                      <input
-                        onChange={handleMonthChange}
-                        name={"date" + track}
-                        type="number"
-                        placeholder="Month"
-                        id={"date" + track}
-                        min="0"
                         required
                       />
                     </div>

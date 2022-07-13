@@ -7,7 +7,6 @@ function Drug_History_Card(props) {
 
   const drugNameArr = JSON.parse(props.drugsData.Drugs);
   const drugDayArr = JSON.parse(props.drugsData.DrugsDay);
-  const drugMonthArr = JSON.parse(props.drugsData.DrugsMonth);
 
   const numArr = []
 
@@ -29,7 +28,7 @@ function Drug_History_Card(props) {
             <>
             <div className="suggestionDiv"> 
           <p>{drugNameArr[num]}</p>
-          <p>Duration: {drugMonthArr[num]} Month {drugDayArr[num]} Days</p>
+          <p>Duration: {drugDayArr[num]} Days</p>
           <p>&nbsp;</p>
         </div>
             </>

@@ -160,7 +160,7 @@ form .user-details .blood-input-box {
 form .user-details .drug-input-box {
   margin-bottom: 15px;
   margin-right: 10px;
-  width: calc(100% / 9);
+  width: calc(100% / 4);
 }
 
 form .blood-input-box span.details {
