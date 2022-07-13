@@ -86,6 +86,7 @@ form .user-details .blood-input-box {
   margin-bottom: 15px;
   width: calc(100% / 1.5 - 20px);
 }
+
 form .blood-input-box span.details {
   display: block;
   font-weight: 500;

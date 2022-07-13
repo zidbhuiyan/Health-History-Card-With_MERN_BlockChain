@@ -19,6 +19,7 @@
     "react-to-print": "^2.14.6",
     "sweetalert": "^2.1.2",
     "web-vitals": "^1.1.2",
+    "react-ipfs-uploader": "^1.2.6",
     "web3": "^1.6.1"
   },
   "scripts": {

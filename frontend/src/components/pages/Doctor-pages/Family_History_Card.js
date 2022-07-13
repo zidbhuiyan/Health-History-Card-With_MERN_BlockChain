@@ -8,8 +8,9 @@ function Family_History_Card(props) {
       <div className="card">
 
         <div className="bloodTransfusionDiv"> 
+         <p>Disease: {props.familyData.Disease}</p>
           <p>Relation: {props.familyData.Relation}</p>
-          <p>Disease: {props.familyData.Disease}</p>
+         
         </div>
 
         <div className="vaccinestaffDiv">

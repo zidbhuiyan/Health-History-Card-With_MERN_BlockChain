@@ -1,5 +1,5 @@
 export const Client_ADDRESS =
-  "0x851f1c4D9986f7Ed88a4bAC68f0E83eA0B354773";
+  "0x859Ad2084e97882656285de90eA1a9EB92639bD1";
 
 export const Client_ABI = [
   {
@@ -56,6 +56,21 @@ export const Client_ABI = [
   {
     "constant": true,
     "inputs": [],
+    "name": "personalCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
     "name": "suggestionsCount",
     "outputs": [
       {
@@ -77,6 +92,148 @@ export const Client_ABI = [
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_Dfirstname",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_Dlastname",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_Docregid",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_hospitalname",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_problem",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_problemType",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_Time",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_hid",
+        "type": "string"
+      }
+    ],
+    "name": "setPersonalData",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getPersonalDataCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "dataNum",
+        "type": "uint256"
+      }
+    ],
+    "name": "getPersonalData",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "dataNum",
+        "type": "uint256"
+      }
+    ],
+    "name": "getPersonalStaffData",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
       }
     ],
     "payable": false,
@@ -255,6 +412,16 @@ export const Client_ABI = [
       },
       {
         "internalType": "string",
+        "name": "_DrugsMonth",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_DrugsDay",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
         "name": "_DrugTime",
         "type": "string"
       },
@@ -297,24 +464,50 @@ export const Client_ABI = [
     "name": "getDrugsData",
     "outputs": [
       {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "dataNum",
+        "type": "uint256"
+      }
+    ],
+    "name": "getDrugsDocData",
+    "outputs": [
+      {
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
-      },
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
       },
       {
         "internalType": "string",

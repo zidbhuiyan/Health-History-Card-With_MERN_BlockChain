@@ -11,6 +11,7 @@ import Blood_Transfusion_Card from "./pages/Report-Staff-pages/Blood_Transfusion
 import Vaccine_History_Card from "./pages/Vaccine-Staff-pages/Vaccine_History_Card";
 import Drug_History_Card from "./pages/Doctor-pages/Drugs_History_Card";
 import Family_History_Card from "./pages/Doctor-pages/Family_History_Card";
+import Personal_History_Card from "./pages/Doctor-pages/Personal_History_Card";
 
 function Info_Navbar(props) {
   const [account, setAccount] = useState();
@@ -20,6 +21,7 @@ function Info_Navbar(props) {
   const [vaccineData, setVaccineData] = useState([]);
   const [drugsData, setDrugsData] = useState([]);
   const [familyData, setFamilyData] = useState([]);
+  const [personalData, setPersonalData] = useState([]);
 
   const [client, setClient] = useState([]);
 
@@ -45,6 +47,50 @@ function Info_Navbar(props) {
     console.log(client);
 
     ///////WEB3////////////////////////
+
+    //////////Personal History start////////
+    const personalDataCount = await client.methods
+      .getPersonalDataCount()
+      .call();
+    console.log("personalDataCount", personalDataCount);
+
+    for (var i = 1; i <= personalDataCount; i++) {
+      const staffDataInfo = await client.methods
+        .getPersonalStaffData(i)
+        .call();
+      const Id = staffDataInfo[0];
+      const Dfirstname = staffDataInfo[1];
+      const Dlastname = staffDataInfo[2];
+      const Docregid = staffDataInfo[3];
+      const hospitalname = staffDataInfo[4];
+
+      const dataInfo = await client.methods.getPersonalData(i).call();
+      const Problem = dataInfo[0];
+      const ProblemType = dataInfo[1];
+      const Time = dataInfo[2];
+      const hid = dataInfo[3];
+
+      //Compare here with hid///
+
+      if (hid == props.user.hid) {
+        setPersonalData((prevState) => [
+          ...prevState,
+          {
+            Id: Id,
+            Dfirstname: Dfirstname,
+            Dlastname: Dlastname,
+            Docregid: Docregid,
+            hospitalname: hospitalname,
+            Problem: Problem,
+            ProblemType: ProblemType,
+            Time: Time,
+            hid: hid,
+          },
+        ]);
+      }
+    }
+
+    //////////Personal History end////////
 
     //////////Family History start////////
 
@@ -97,17 +143,19 @@ function Info_Navbar(props) {
     console.log("drugsCount", drugsCount);
 
     for (var i = 1; i <= drugsCount; i++) {
-      const dataInfo = await client.methods.getDrugsData(i).call();
-      const Id = dataInfo[0];
-      const Dfirstname = dataInfo[1];
-      const Dlastname = dataInfo[2];
-      const Docregid = dataInfo[3];
-      const hospitalname = dataInfo[4];
-      const Drugs = dataInfo[5];
-      const DrugTime = dataInfo[6];
-      const hid = dataInfo[7];
+      const dataStaffInfo = await client.methods.getDrugsDocData(i).call();
+      const Id = dataStaffInfo[0];
+      const Dfirstname = dataStaffInfo[1];
+      const Dlastname = dataStaffInfo[2];
+      const Docregid = dataStaffInfo[3];
+      const hospitalname = dataStaffInfo[4];
 
-      console.log(dataInfo);
+      const dataInfo = await client.methods.getDrugsData(i).call();
+      const Drugs = dataInfo[0]; 
+      const DrugsMonth = dataInfo[1];
+      const DrugsDay = dataInfo[2];
+      const DrugTime = dataInfo[3];
+      const hid = dataInfo[4];
 
       //Compare here with hid///
 
@@ -121,6 +169,8 @@ function Info_Navbar(props) {
             Docregid: Docregid,
             hospitalname: hospitalname,
             Drugs: Drugs,
+            DrugsMonth:DrugsMonth,
+            DrugsDay:DrugsDay,
             DrugTime: DrugTime,
             hid: hid,
           },
@@ -267,6 +317,32 @@ function Info_Navbar(props) {
 
   /////////////////Buttons Start/////////////////
 
+  /////////Personal History Button start////////
+  const personalButton = () => {
+    navigate("/personal_history", {
+      state: {
+        user: props.user,
+        userCat: props.userCat,
+        userCatInfo: props.userCatInfo,
+      },
+    });
+  };
+
+  //////////Personal History end////////
+
+  /////////Investigation Profile Button start////////
+  const investigationButton = () => {
+    navigate("/investigation_profile", {
+      state: {
+        user: props.user,
+        userCat: props.userCat,
+        userCatInfo: props.userCatInfo,
+      },
+    });
+  };
+
+  //////////Investigation Profile end////////
+
   /////////Family History Button start////////
   const familyButton = () => {
     navigate("/family_history", {
@@ -363,8 +439,15 @@ function Info_Navbar(props) {
       } else if (value == 1) {
         return (
           <>
-            <div>
-              <h1>Personal History</h1>
+            <h2 className="infoHead">Family History</h2>
+            <div className="scorllTab">
+              {familyData
+                .map((familyData, key) => (
+                  <div key={familyData.Id}>
+                    <Family_History_Card familyData={familyData} />
+                  </div>
+                ))
+                .reverse()}
             </div>
           </>
         );
@@ -393,6 +476,9 @@ function Info_Navbar(props) {
       if (value == 0) {
         return (
           <>
+            <h1>
+              <Button onClick={investigationButton}>Add new report</Button>
+            </h1>
             <div>
               <h1>Investigation Profile</h1>
             </div>
@@ -401,8 +487,15 @@ function Info_Navbar(props) {
       } else if (value == 1) {
         return (
           <>
-            <div>
-              <h1>Personal History</h1>
+            <h2 className="infoHead">Family History</h2>
+            <div className="scorllTab">
+              {familyData
+                .map((familyData, key) => (
+                  <div key={familyData.Id}>
+                    <Family_History_Card familyData={familyData} />
+                  </div>
+                ))
+                .reverse()}
             </div>
           </>
         );
@@ -475,9 +568,21 @@ function Info_Navbar(props) {
       } else if (value == 1) {
         return (
           <>
+            <h1>
+              <Button onClick={personalButton}>Add new personal history</Button>
+            </h1>
             <div>
-              <h1>Personal History</h1>
+            <h2 className="infoHead">Personal History</h2>
+            <div className="scorllTab">
+              {personalData
+                .map((personalData, key) => (
+                  <div key={personalData.Id}>
+                    <Personal_History_Card personalData ={personalData}/>
+                  </div>
+                ))
+                .reverse()}
             </div>
+          </div>
           </>
         );
       } else if (value == 2) {
@@ -517,7 +622,7 @@ function Info_Navbar(props) {
       } else if (value == 5) {
         return (
           <>
-          <h1>
+            <h1>
               <Button onClick={familyButton}>Add family history</Button>
             </h1>
             <h2 className="infoHead">Family History</h2>
@@ -623,8 +728,19 @@ function Info_Navbar(props) {
       } else if (value == 1) {
         return (
           <>
+          <div>
             <h2 className="infoHead">Personal History</h2>
-          </>
+            <div className="scorllTab">
+              {personalData
+                .map((personalData, key) => (
+                  <div key={personalData.Id}>
+                    <Personal_History_Card personalData ={personalData}/>
+                  </div>
+                ))
+                .reverse()}
+            </div>
+          </div>
+        </>
         );
       } else if (value == 2) {
         return (

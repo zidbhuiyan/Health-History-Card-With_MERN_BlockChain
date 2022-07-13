@@ -30,6 +30,8 @@ import Doctor_Sugestions from './components/pages/Doctor-pages/Doctor_Suggestion
 import Blood_Transfusion from './components/pages/Report-Staff-pages/Blood_Transfusion';
 import Drugs_History from './components/pages/Doctor-pages/Drugs_History';
 import Family_History from './components/pages/Doctor-pages/Family_History';
+import Investigation_Profile from './components/pages/Report-Staff-pages/Investigation_Profile';
+import Personal_History from './components/pages/Doctor-pages/Personal_History';
 
 
 function App() {
@@ -88,10 +90,12 @@ function App() {
         <Route path='/doctor_suggestion' element={loginUser && loginUser._id && loginUser.Docregid ? <Doctor_Sugestions user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
         <Route path='/drugs_history' element={loginUser && loginUser._id && loginUser.Docregid ? <Drugs_History user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
         <Route path='/family_history' element={loginUser && loginUser._id && loginUser.Docregid ? <Family_History user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
+        <Route path='/personal_history' element={loginUser && loginUser._id && loginUser.Docregid ? <Personal_History user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
 
         <Route path='/report_staff_home' element={loginUser && loginUser._id && loginUser.Rregid ? <Report_Staff_Home user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
         <Route path='/report_staff_profile' element={loginUser && loginUser._id && loginUser.Rregid ? <Report_Staff_Profile user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
         <Route path='/blood_transfusion' element={loginUser && loginUser._id && loginUser.Rregid ? <Blood_Transfusion user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
+        <Route path='/investigation_profile' element={loginUser && loginUser._id && loginUser.Rregid ? <Investigation_Profile user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
 
         <Route path='/vaccine_staff_home' element={ loginUser && loginUser._id && loginUser.Vregid ? <Vaccine_Staff_Home user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
         <Route path='/vaccine_staff_profile' element={ loginUser && loginUser._id && loginUser.Vregid ?<Vaccine_Staff_Profile user = {loginUser}/> : <Navigate to ='/login' replace/>}/>

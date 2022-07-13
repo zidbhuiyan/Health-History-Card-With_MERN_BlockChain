@@ -1,133 +1,196 @@
-import React, {useState, useEffect} from 'react';
-import '../../../App.css';
-import Footer from '../../Footer';
-import Doctor_Navbar from './Doctor_Navbar';
-import'./Doctor_Home.css'
-import {useLocation} from 'react-router-dom';
-import swal from 'sweetalert';
-import {useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import "../../../App.css";
+import Footer from "../../Footer";
+import Doctor_Navbar from "./Doctor_Navbar";
+import "./Doctor_Home.css";
+import { useLocation } from "react-router-dom";
+import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
 
 import Web3 from "web3";
 import { Client_ABI, Client_ADDRESS } from "../../../config";
 
-function Drugs_History( props ) {
+function Drugs_History(props) {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  const location = useLocation();
 
-    const location = useLocation();
+  const [inputTrack, setInputTrack] = useState(["1"]);
 
-    console.log(location.state);
+  const [input, setInput] = useState({});
+  const [inputDate, setInputDate] = useState({});
+  const [inputMonth, setInputMonth] = useState({});
 
-    const [input, setInput] = useState({
-        hid: '',
-        Dfirstname: '',
-        Dlastname: '',
-        Docregid: '',
-        hospitalname: '',
-        Drugs: ''
-      })
+  function handleChange(event) {
+    const { name, value } = event.target;
 
-      function handleChange(event){
-        const {name, value} = event.target;
-    
-        setInput(prevInput => {
-        return{
-            ...prevInput,
-            [name] : value
-        }
-        
-      })
-    }
+    setInput((prevInput) => {
+      return {
+        ...prevInput,
+        [name]: value,
+      };
+    });
+  }
 
-    function handleClick(event){
+  function handleDateChange(event) {
+    const { name, value } = event.target;
 
-        event.preventDefault();
+    setInputDate((prevInput) => {
+      return {
+        ...prevInput,
+        [name]: value,
+      };
+    });
+  }
 
-        const date = new Date().toLocaleString();
-        console.log(date);
+  function handleMonthChange(event) {
+    const { name, value } = event.target;
 
-        console.log("set");
-        const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
-        const client = new web3.eth.Contract(Client_ABI, Client_ADDRESS);
-        console.log(client);
-    
-        web3.eth.getAccounts().then(function (accounts) {
-          let acc = accounts[0];
-          return client.methods
-            .setDrugsData(
-              props.user.Dfirstname,
-              props.user.Dlastname,
-              props.user.Docregid,
-              props.user.hospitalname,
-              input.Drugs,
-              date,
-              location.state.user.hid
-            )
-            .send({ from: acc })
-            .then((done) => {
-              swal({
-                title: "Saved successfully!",
-                icon: "success",
-                button: "Okay",
-              }).then((found) => {
-                if (found) {
-                  navigate("/search_profile",{
-                    state:{
-                      user: location.state.user,
-                      userCat: location.state.userCat,
-                      userCatInfo: location.state.userCatInfo
-                    }
-                  });
-                }
+    setInputMonth((prevInput) => {
+      return {
+        ...prevInput,
+        [name]: value,
+      };
+    });
+  }
+
+  const drugsNames = Object.values(input);
+  const drugsDate = Object.values(inputDate);
+  const drugsMonth = Object.values(inputMonth);
+
+  function addClick(event) {
+    event.preventDefault();
+    console.log("get");
+    let t = inputTrack.length + 1;
+    console.log(t);
+    setInputTrack((prevState) => [...prevState, "" + t]);
+  }
+
+  function handleClick(event) {
+    event.preventDefault();
+
+    var drugNameStr = JSON.stringify(drugsNames);
+    var drugdayStr = JSON.stringify(drugsDate);
+    var drugmontStr = JSON.stringify(drugsMonth);
+
+    const date = new Date().toLocaleString();
+    console.log(date);
+
+    console.log("set");
+    const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
+    const client = new web3.eth.Contract(Client_ABI, Client_ADDRESS);
+    console.log(client);
+
+    web3.eth.getAccounts().then(function (accounts) {
+      let acc = accounts[0];
+      return client.methods
+        .setDrugsData(
+          props.user.Dfirstname,
+          props.user.Dlastname,
+          props.user.Docregid,
+          props.user.hospitalname,
+          drugNameStr,
+          drugmontStr,
+          drugdayStr,
+          date,
+          location.state.user.hid
+        )
+        .send({ from: acc })
+        .then((done) => {
+          swal({
+            title: "Saved successfully!",
+            icon: "success",
+            button: "Okay",
+          }).then((found) => {
+            if (found) {
+              navigate("/search_profile", {
+                state: {
+                  user: location.state.user,
+                  userCat: location.state.userCat,
+                  userCatInfo: location.state.userCatInfo,
+                },
               });
-            });
+            }
+          });
         });
- 
-     }
-  
+    });
+  }
+
   return (
     <>
-    <div className='bgdoctor'>
-      <Doctor_Navbar/>
-      
+      <div className="bgdoctor">
+        <Doctor_Navbar />
 
-        <div class="box-container">
-          <div class="box">
+        <div class="container">
           <h1 class="suggheading">
-          <span>Drugs</span>
-          <span>&nbsp;</span>
-          <span>Hisory</span>
-        </h1>
-            <div class="content">
-              
-              <div class="row">
-                <form id="contactForm" name="contactForm">
-                  
-                  <textarea onChange ={handleChange}
-                    name= "Drugs"
-                    placeholder="Write drugs name here.."
-                    value={input.Drugs}
-                    cols="30"
-                    rows="15"
-                    id="Drugs"
-                    required
-                  ></textarea>
-    
-                  <input onClick={handleClick}
-                    type="submit"
-                    class="btn"
-                    value="Send suggestions"
-                    id="submitBtn"
-                  />
-                </form>
+            <span>Drug</span>
+            <span>&nbsp;</span>
+            <span>History</span>
+          </h1>
+          <div class="content">
+            <form>
+              <div class="user-details">
+                {inputTrack.map((track) => (
+                  <>
+                    <div class="blood-input-box">
+                      <span class="details">Drug name:</span>
+                      <input
+                        onChange={handleChange}
+                        name={"drug" + track}
+                        type="text"
+                        placeholder="Enter Drug Name"
+                        id={"drug" + track}
+                        required
+                      />
+                    </div>
+                    <div class="drug-input-box">
+                      <span class="details">Month:</span>
+                      <input
+                        onChange={handleMonthChange}
+                        name={"date" + track}
+                        type="number"
+                        placeholder="Month"
+                        id={"date" + track}
+                        min="0"
+                        required
+                      />
+                    </div>
+
+                    <div class="drug-input-box">
+                      <span class="details">Days:</span>
+                      <input
+                        onChange={handleDateChange}
+                        name={"date" + track}
+                        type="number"
+                        placeholder="Days"
+                        id={"date" + track}
+                        min="0"
+                        required
+                      />
+                    </div>
+                  </>
+                ))}
               </div>
-            </div>
+              <div class="button">
+                <button onClick={addClick} class="addbtn" id="submitBtn">
+                  Add more drugs
+                </button>
+              </div>
+              <div class="button">
+                <input
+                  onClick={handleClick}
+                  type="submit"
+                  class="btn"
+                  value="Update"
+                  id="submitBtn"
+                />
+              </div>
+            </form>
           </div>
         </div>
-     
 
-      <Footer/>
-    </div>
+        <Footer />
+      </div>
     </>
   );
 }
