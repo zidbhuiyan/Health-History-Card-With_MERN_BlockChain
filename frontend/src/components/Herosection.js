@@ -12,13 +12,11 @@ function HeroSection() {
       <p>Click on Get Started to Login</p>
       <div className='hero-btns'>
         <Link to ='/login'>
-        <Button
-          className='btns'
-          buttonStyle='btn--outline'
-          buttonSize='btn--large'
+        <button
+          className='getstartbtns'
         >
           GET STARTED
-        </Button>
+        </button>
         </Link>
       </div>
     </div>

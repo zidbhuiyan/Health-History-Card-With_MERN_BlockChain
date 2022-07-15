@@ -15,6 +15,11 @@ function Family_History(props) {
 
   const location = useLocation();
 
+  if (!props.user) {
+    navigate("/");
+    window.location.reload(false);
+  }
+
   console.log(location.state);
 
   const [input, setInput] = useState({

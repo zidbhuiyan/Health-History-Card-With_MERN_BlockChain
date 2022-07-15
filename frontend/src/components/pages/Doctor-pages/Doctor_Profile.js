@@ -1,11 +1,17 @@
 import React from 'react';
 import '../../../App.css';
 import Footer from '../../Footer';
+import { useLocation, useNavigate } from "react-router-dom";
 import Doctor_Navbar from './Doctor_Navbar';
 
 function Doctor_Profile(props) {
 
-  console.log(props.user);
+  const navigate = useNavigate();
+
+  if (!props.user) {
+    navigate("/");
+    window.location.reload(false);
+  }
 
     return (
       <>

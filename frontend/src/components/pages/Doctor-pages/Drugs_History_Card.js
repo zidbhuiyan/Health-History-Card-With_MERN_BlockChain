@@ -29,7 +29,7 @@ function Drug_History_Card(props) {
             <div className="suggestionDiv"> 
           <p>{drugNameArr[num]}</p>
           <p>Duration: {drugDayArr[num]} Days</p>
-          <p>&nbsp;</p>
+         
         </div>
             </>
           ))

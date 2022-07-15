@@ -35,6 +35,20 @@ img {
   margin-top: 32px;
 }
 
+.getstartbtns{
+  width: 150px;
+  height: 50px;
+  background: black;
+  color: white;
+  border-radius: 5px;
+  border: 2px solid #d9d9d9;
+}
+
+.getstartbtns:hover {
+  background-color: darkgray;
+  color: black;
+}
+
 .hero-btns .btn {
   margin: 6px;
 }

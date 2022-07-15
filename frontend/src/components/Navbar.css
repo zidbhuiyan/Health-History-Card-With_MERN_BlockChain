@@ -42,6 +42,21 @@
   font-size: 1.5rem;
 }
 
+.loginbtn{
+  width: 100px;
+  height: 50px;
+  background: black;
+  color: white;
+  border-radius: 10px;
+  margin-top: 15px;
+  border: 2px solid #d9d9d9;
+}
+
+.loginbtn:hover {
+  background-color: #00006f;
+  color: white;
+}
+
 .doctor-panel {
   color: #fff;
   justify-self: center;

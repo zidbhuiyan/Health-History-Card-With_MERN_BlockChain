@@ -4,12 +4,18 @@ import "./Search_profile.css";
 import Footer from "../../Footer";
 import Doctor_Navbar from "../Doctor-pages/Doctor_Navbar";
 import Info_Navbar from "../../Info_Navbar";
-import { useLocation } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
 import Report_Staff_Navbar from "../Report-Staff-pages/Report_Staff_Navbar";
 import Vaccine_Staff_Navbar from "../Vaccine-Staff-pages/Vaccine_Staff_Navbar";
 
 function Search_profile(props) {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  if (!props.user) {
+    navigate("/");
+    window.location.reload(false);
+  }
 
   if (location.state.userCat === "doctor") {
     return (

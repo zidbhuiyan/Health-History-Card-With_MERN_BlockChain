@@ -80,7 +80,7 @@
 }
 .bottom .left{
     position: relative;
-    top: 80px;
+    top: 65px;
     text-align: left;
     left: 30px;
     text-transform: capitalize;
@@ -88,9 +88,31 @@
     font-size: 17px;
     text-emphasis: spacing;
 }
+
+.bottom .left_upper{
+    position: relative;
+    top: 35px;
+    text-align: left;
+    left: 30px;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 17px;
+    text-emphasis: spacing;
+}
+
 .bottom .left_desi{
     position: relative;
-    top: 80px;
+    top: 45px;
+    text-align: left;
+    font-size:15px;
+    color: rgba(0, 0, 0, 0.752);
+    font-weight: normal;
+    left: 30px;
+}
+
+.bottom .left_desi_upper{
+    position: relative;
+    top: 15px;
     text-align: left;
     font-size:15px;
     color: rgba(0, 0, 0, 0.752);
@@ -129,7 +151,18 @@
 
 .bottom .right{
     position: relative;
-    top: -5px;
+    top: -95px;
+    text-align: left;
+    left: 60%;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 17px;
+    text-emphasis: spacing;
+}
+
+.bottom .right_upper{
+    position: relative;
+    top: -125px;
     text-align: left;
     left: 60%;
     text-transform: capitalize;
@@ -139,7 +172,17 @@
 }
 .bottom .right_desi{
     position: relative;
-    top: -5px;
+    top: -115px;
+    text-align: left;
+    font-size:15px;
+    color: rgba(0, 0, 0, 0.752);
+    font-weight: normal;
+    left: 60%;
+}
+
+.bottom .right_desi_upper{
+    position: relative;
+    top: -145px;
     text-align: left;
     font-size:15px;
     color: rgba(0, 0, 0, 0.752);
@@ -177,7 +220,6 @@
     padding-top: 4px;
     padding-left: 4px;
     padding-right: 4px;
-
     background-color: aliceblue;
     top: 15px;
     left: 65%;
@@ -186,7 +228,8 @@
 .Details {
     color: white;
     text-align: center;
-    padding: 10px;
+    margin-top: 10px;
+    padding: 1px;
     font-size: 25px;
 }
 
@@ -195,10 +238,9 @@
     color: white;
     text-align: left;
     padding: 5px;
-    line-height: 20px;
-    font-size: 16px;
+    font-size: 15px;
     margin-top: 1px;
-    line-height: 22px;
+    line-height: 7.5px;
 }
 
 

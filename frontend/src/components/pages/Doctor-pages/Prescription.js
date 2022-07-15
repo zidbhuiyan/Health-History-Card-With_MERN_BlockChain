@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "../../../App.css";
 import Footer from "../../Footer";
-import "./Report_Staff_Home.css";
+import "./Doctor_Home.css";
 import { useLocation } from "react-router-dom";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 
 import Web3 from "web3";
 import { Client_ABI, Client_ADDRESS } from "../../../config";
-import Report_Staff_Navbar from "./Report_Staff_Navbar";
+import Doctor_Navbar from "./Doctor_Navbar";
 import { ImageUpload, PdfUpload } from "react-ipfs-uploader";
 
-function Investigation_Profile(props) {
+function Prescription(props) {
   const navigate = useNavigate();
 
   const location = useLocation();
@@ -69,14 +69,13 @@ function Investigation_Profile(props) {
     console.log(client);
 
     if(url){
-
       web3.eth.getAccounts().then(function (accounts) {
         let acc = accounts[0];
         return client.methods
-          .setInvestigationData(
-            props.user.firstname,
-            props.user.lastname,
-            props.user.Rregid,
+          .setPrescriptionData(
+            props.user.Dfirstname,
+            props.user.Dlastname,
+            props.user.Docregid,
             props.user.hospitalname,
             url,
             date,
@@ -85,7 +84,7 @@ function Investigation_Profile(props) {
           .send({ from: acc })
           .then((done) => {
             swal({
-              title: "Report saved!",
+              title: "Saved!",
               icon: "success",
               button: "Okay",
             }).then((found) => {
@@ -101,27 +100,27 @@ function Investigation_Profile(props) {
             });
           });
       });
-
     }
+
     else{
       swal({
-        title: "Upload file first!",
+        title: "Upload the file first!",
         icon: "warning",
         button: "Okay",
       })
     }
+
+    
   }
 
   return (
     <>
-      <div className="bgRepStf">
-        <Report_Staff_Navbar />
+      <div className="bgdoctor">
+        <Doctor_Navbar />
 
         <div class="container">
           <h1 class="suggheading">
-            <span>Invetstigation</span>
-            <span>&nbsp;</span>
-            <span>Profile</span>
+            <span>Prescription</span>
           </h1>
           <div class="content">
             <div class="user-details">
@@ -150,7 +149,9 @@ function Investigation_Profile(props) {
                     <span class="details">Upload Pdf Here..</span>
                     <PdfUpload setUrl={setUrl} />
                   </div>
-                  <div>You must upload the image pdf then save it</div>
+
+                  <div>You must upload the pdf first then save it</div>
+
                   <div>
                     
                   </div>
@@ -163,7 +164,7 @@ function Investigation_Profile(props) {
                 onClick={handleClick}
                 type="submit"
                 class="btn"
-                value="Save record"
+                value="Save prescription"
                 id="submitBtn"
               />
             </div>
@@ -176,4 +177,4 @@ function Investigation_Profile(props) {
   );
 }
 
-export default Investigation_Profile;
+export default Prescription;

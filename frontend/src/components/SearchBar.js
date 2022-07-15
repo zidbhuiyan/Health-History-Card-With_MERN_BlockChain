@@ -83,14 +83,9 @@ function SearchBar(props) {
             required
           />
 
-          <Button
-            buttonStyle="btn--outline"
-            onClick={handleClick}
-            buttonSize="btn--medium"
-          >
-            {" "}
+          <button class="searchbtn" onClick={handleClick}>
             <i class="fa fa-search" aria-hidden="true" />{" "}
-          </Button>
+          </button>
         </div>
       </form>
     </>

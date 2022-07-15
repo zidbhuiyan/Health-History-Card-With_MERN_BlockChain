@@ -17,6 +17,11 @@ function Blood_Transfusion(props) {
 
   console.log(location.state);
 
+  if(!props.user){
+    navigate("/");
+  window.location.reload(false);
+  }
+
   const [input, setInput] = useState({
     type: "",
     amount: "",

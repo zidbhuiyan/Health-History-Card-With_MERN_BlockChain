@@ -3,9 +3,8 @@ import "../../../App.css";
 import Footer from "../../Footer";
 import Vaccine_Staff_Navbar from "./Vaccine_Staff_Navbar";
 import "./Vaccine_Staff_Home.css";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
-import { useNavigate } from "react-router-dom";
 
 import Web3 from "web3";
 import { Client_ABI, Client_ADDRESS } from "../../../config";
@@ -16,6 +15,11 @@ function Vaccine_History(props) {
   const location = useLocation();
 
   console.log(location.state);
+
+  if(!props.user){
+    navigate("/");
+  window.location.reload(false);
+  }
 
   const [input, setInput] = useState({
     vaccineId: "",

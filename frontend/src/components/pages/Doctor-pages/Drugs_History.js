@@ -15,6 +15,11 @@ function Drugs_History(props) {
 
   const location = useLocation();
 
+  if (!props.user) {
+    navigate("/");
+    window.location.reload(false);
+  }
+
   const [inputTrack, setInputTrack] = useState(["1"]);
 
   const [input, setInput] = useState({});

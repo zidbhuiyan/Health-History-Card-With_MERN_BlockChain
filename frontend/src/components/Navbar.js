@@ -14,7 +14,7 @@ function Navbar(props) {
         <>
         <li>
          <a href="/registration">
-         <Button buttonStyle='btn--outline'>Register</Button>
+         <button class="loginbtn" >Register</button>
         </a>
         </li>
       </>
@@ -26,12 +26,12 @@ function Navbar(props) {
         <>
         <li>
          <a href="/login">
-         <Button buttonStyle='btn--outline'>Login</Button>
+         <button class="loginbtn"  >Login</button>
         </a>
         </li>
         <li>
          <a href="/registration">
-         <Button buttonStyle='btn--outline'>Register</Button>
+         <button class="loginbtn"  >Register</button>
         </a>
         </li>
       </>
@@ -43,7 +43,7 @@ function Navbar(props) {
         <>
         <li>
          <a href="/login">
-         <Button buttonStyle='btn--outline'>Login</Button>
+         <button class="loginbtn"  >Login</button>
         </a>
         </li>
       </>
@@ -69,7 +69,7 @@ function Navbar(props) {
                </li>
                <li>
         
-         <Button onClick={logout} buttonStyle='btn--outline'>Log out</Button>
+         <button class="loginbtn"  onClick={logout} >Log out</button>
        
         </li>
       </>
@@ -153,6 +153,7 @@ function Navbar(props) {
 
   const logout = () =>{
     sessionStorage.setItem("Myuser", null)
+    navigate("/");
     window.location.reload(false);
   }
 

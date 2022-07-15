@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '../../Button';
-import { Link } from 'react-router-dom';
+import { Link ,useNavigate} from 'react-router-dom';
 import '../../Navbar.css';
 
 function Report_Staff_Navbar( props ) {
+  
+  const navigate = useNavigate();
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
@@ -26,6 +28,7 @@ function Report_Staff_Navbar( props ) {
 
   function logoutClick(event) {
     sessionStorage.setItem("Myuser", null)
+    navigate("/");
     window.location.reload(false);
   }
 
@@ -74,7 +77,7 @@ function Report_Staff_Navbar( props ) {
             </li>
 
             <li>
-               <Button onClick={logoutClick}  buttonStyle='btn--outline'>Logout</Button>
+               <button class="login" onClick={logoutClick}>Logout</button>
             </li>
             
           </ul>

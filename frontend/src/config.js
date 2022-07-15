@@ -1,5 +1,5 @@
 export const Client_ADDRESS =
-  "0x1098962B3DF847ce4a290bAeC09f0b771863DE74";
+  "0x6e83Cb375aCfb2315Ef21B4eC2EfD8eb7DC724A8";
 
 export const Client_ABI = [
   {
@@ -56,7 +56,37 @@ export const Client_ABI = [
   {
     "constant": true,
     "inputs": [],
+    "name": "investigationCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
     "name": "personalCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "prescriptionCount",
     "outputs": [
       {
         "internalType": "uint256",
@@ -92,6 +122,238 @@ export const Client_ABI = [
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_Dfirstname",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_Dlastname",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_Docregid",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_hospitalname",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_src",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_Time",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_hid",
+        "type": "string"
+      }
+    ],
+    "name": "setPrescriptionData",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getPrescriptionDataCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "dataNum",
+        "type": "uint256"
+      }
+    ],
+    "name": "getPrescriptionData",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_firstname",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_lastname",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_Rregid",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_hospitalname",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_src",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_Time",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_hid",
+        "type": "string"
+      }
+    ],
+    "name": "setInvestigationData",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getInvestigationDataCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "dataNum",
+        "type": "uint256"
+      }
+    ],
+    "name": "getInvestigationData",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
       }
     ],
     "payable": false,

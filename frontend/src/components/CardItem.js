@@ -19,13 +19,11 @@ function CardItem(props) {
           
           <div className='card-btns'>
         <Link className='cards__item__link' to={props.path}>
-        <Button
-          className='btns'
-          buttonStyle='btn--outline'
-          buttonSize='btn--large'
+        <button
+          className='cardbtn'
         >
           {props.text}
-        </Button>
+        </button>
         </Link>
       </div>
       </div>

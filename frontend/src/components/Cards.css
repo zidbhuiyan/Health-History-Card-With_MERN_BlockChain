@@ -71,6 +71,19 @@ h1 {
   box-sizing: border-box;
 }
 
+.cardbtn{
+  width: 100%;
+  height: 50px;
+  background: black;
+  color: white;
+  border-radius: 5px;
+}
+
+.cardbtn:hover {
+  background-color: darkgray;
+  color: black;
+}
+
 .cards__item__img {
   position: absolute;
   top: 0;

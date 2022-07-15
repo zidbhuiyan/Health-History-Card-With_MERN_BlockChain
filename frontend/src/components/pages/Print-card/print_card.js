@@ -5,13 +5,21 @@ import Footer from '../../Footer';
 import Navbar from '../../Navbar';
 import './print_card.css'
 import {QRCodeSVG} from 'qrcode.react';
+import { Link,useNavigate } from 'react-router-dom';
 
 const Print_card = (props) => {
+
+  const navigate = useNavigate();
 
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
+
+ if(!props.user){
+  navigate("/");
+  window.location.reload(false);
+ }
 
 
     return (
@@ -38,12 +46,12 @@ const Print_card = (props) => {
                     <div class="bottom">
                         <p class="left">Health ID:</p>
                         <p class="left_desi">{props.user.hid}</p>
-                        <p class="left">Name:</p>
-                        <p class="left_desi">{props.user.firstname} {props.user.lastname}</p>
+                        <p class="left_upper">Name:</p>
+                        <p class="left_desi_upper">{props.user.firstname} {props.user.lastname}</p>
                         <p class="right">Gender:</p>
                         <p class="right_desi">{props.user.gender}</p>
-                        <p class="right">Date of Birth:</p>
-                        <p class="right_desi">{props.user.dateofbirth}</p>
+                        <p class="right_upper">Date of Birth:</p>
+                        <p class="right_desi_upper">{props.user.dateofbirth}</p>
                     </div>
                 </div> 
 

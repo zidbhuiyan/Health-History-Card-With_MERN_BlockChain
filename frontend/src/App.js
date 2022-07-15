@@ -32,6 +32,7 @@ import Drugs_History from './components/pages/Doctor-pages/Drugs_History';
 import Family_History from './components/pages/Doctor-pages/Family_History';
 import Investigation_Profile from './components/pages/Report-Staff-pages/Investigation_Profile';
 import Personal_History from './components/pages/Doctor-pages/Personal_History';
+import Prescription from './components/pages/Doctor-pages/Prescription';
 
 
 function App() {
@@ -85,27 +86,28 @@ function App() {
         <Route path='/Register_form_vaccine_staff' element={loginUser && loginUser._id ? <Navigate to = {path} replace/> :<Registration_Form_Vaccine_Staff/>}/>
         <Route path='/Register_form_report_staff' element={loginUser && loginUser._id ? <Navigate to = {path} replace/> :<Registration_Form_Report_Staff/>}/>
 
-        <Route path='/doctor_home' element={loginUser && loginUser._id && loginUser.Docregid ? <Doctor_Home user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
-        <Route path='/doctor_profile' element={loginUser && loginUser._id && loginUser.Docregid ? <Doctor_Profile user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
-        <Route path='/doctor_suggestion' element={loginUser && loginUser._id && loginUser.Docregid ? <Doctor_Sugestions user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
-        <Route path='/drugs_history' element={loginUser && loginUser._id && loginUser.Docregid ? <Drugs_History user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
-        <Route path='/family_history' element={loginUser && loginUser._id && loginUser.Docregid ? <Family_History user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
-        <Route path='/personal_history' element={loginUser && loginUser._id && loginUser.Docregid ? <Personal_History user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
+        <Route path='/doctor_home' element={loginUser && loginUser._id && loginUser.Docregid ? <Doctor_Home user = {loginUser}/> : <Navigate to ='/' replace/>}/>
+        <Route path='/doctor_profile' element={ <Doctor_Profile user = {loginUser}/> }/>
+        <Route path='/doctor_suggestion' element={ <Doctor_Sugestions user = {loginUser}/> }/>
+        <Route path='/drugs_history' element={ <Drugs_History user = {loginUser}/> }/>
+        <Route path='/family_history' element={ <Family_History user = {loginUser}/> }/>
+        <Route path='/personal_history' element={ <Personal_History user = {loginUser}/> }/>
+        <Route path='/prescription' element={ <Prescription user = {loginUser}/> }/>
 
-        <Route path='/report_staff_home' element={loginUser && loginUser._id && loginUser.Rregid ? <Report_Staff_Home user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
-        <Route path='/report_staff_profile' element={loginUser && loginUser._id && loginUser.Rregid ? <Report_Staff_Profile user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
-        <Route path='/blood_transfusion' element={loginUser && loginUser._id && loginUser.Rregid ? <Blood_Transfusion user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
-        <Route path='/investigation_profile' element={loginUser && loginUser._id && loginUser.Rregid ? <Investigation_Profile user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
+        <Route path='/report_staff_home' element={loginUser && loginUser._id && loginUser.Rregid ? <Report_Staff_Home user = {loginUser}/> : <Navigate to ='/' replace/>}/>
+        <Route path='/report_staff_profile' element={ <Report_Staff_Profile user = {loginUser}/>}/>
+        <Route path='/blood_transfusion' element={ <Blood_Transfusion user = {loginUser}/>}/>
+        <Route path='/investigation_profile' element={ <Investigation_Profile user = {loginUser}/>}/>
 
-        <Route path='/vaccine_staff_home' element={ loginUser && loginUser._id && loginUser.Vregid ? <Vaccine_Staff_Home user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
-        <Route path='/vaccine_staff_profile' element={ loginUser && loginUser._id && loginUser.Vregid ?<Vaccine_Staff_Profile user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
-        <Route path='/vaccine_history' element={ loginUser && loginUser._id && loginUser.Vregid ?<Vaccine_History user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
+        <Route path='/vaccine_staff_home' element={ loginUser && loginUser._id && loginUser.Vregid ? <Vaccine_Staff_Home user = {loginUser}/> : <Navigate to ='/' replace/>}/>
+        <Route path='/vaccine_staff_profile' element={<Vaccine_Staff_Profile user = {loginUser}/>}/>
+        <Route path='/vaccine_history' element={ <Vaccine_History user = {loginUser}/>}/>
 
         
-        <Route path='/profile' element={loginUser && loginUser._id && loginUser.hid ? <Profile user = {loginUser} /> : <Navigate to ='/login' replace/>}/>
-        <Route path='/print_card' element={loginUser && loginUser._id && loginUser.hid ? <Print_card user = {loginUser}/> : <Navigate to ='/login' replace/>}/>
+        <Route path='/profile' element={loginUser && loginUser._id && loginUser.hid ? <Profile user = {loginUser} /> : <Navigate to ='/' replace/>}/>
+        <Route path='/print_card' element={ <Print_card user = {loginUser}/>}/>
 
-        <Route path='/search_profile' element={loginUser && loginUser._id ? <Search_profile/> : <Navigate to ='/' replace/>}/>
+        <Route path='/search_profile' element={ <Search_profile user = {loginUser}/> }/>
 
         </Routes>
       </Router>
