@@ -24,7 +24,7 @@ function Vaccine_History_Card(props) {
        monthString = monthDiff+" months ago."
       }
       else{
-        monthString = "Less than one month."
+        monthString = "Less than one month ago."
       }
   return (
     <>
@@ -35,12 +35,12 @@ function Vaccine_History_Card(props) {
         </div>
 
       <div className="vaccineDiv">
-        <h4>Vaccine name:</h4> <p>{props.vaccineData.vaccineName} <h5> ({props.vaccineData.vaccineDoseNum}) </h5> </p>
-        <h4>Diseases:</h4> <h5>{props.vaccineData.vaccineDisease}</h5>
+        <h5>Vaccine name: {props.vaccineData.vaccineName} ({props.vaccineData.vaccineDoseNum})  </h5>
+        <h5>Diseases: {props.vaccineData.vaccineDisease} </h5>
       </div>
 
       <div className="vaccinestaffDiv">
-        <h5>Vaccinated by:</h5>
+        <h5>Updated by:</h5>
         <h5>{props.vaccineData.firstname} {props.vaccineData.lastname}</h5>
         <h5>{props.vaccineData.hospitalname}</h5>
       </div>

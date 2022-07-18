@@ -101,10 +101,15 @@ function Registration_Form() {
   
             result = (res.data.message)
 
+            console.log(user.hid);
+
+            let str ="Health ID: "+user.hid
+            let anostr = "Registration Done!"+"\n"+"Now, Please login with Health ID!"
+
             if(result == "regDone"){
               swal({
-                title: "Registration Done!",
-                text: "Now, Please login!",
+                title: str,
+                text: anostr,
                 icon: "success",
                 button: "Okay",
               }).then((done) => {

@@ -33,6 +33,7 @@ import Family_History from './components/pages/Doctor-pages/Family_History';
 import Investigation_Profile from './components/pages/Report-Staff-pages/Investigation_Profile';
 import Personal_History from './components/pages/Doctor-pages/Personal_History';
 import Prescription from './components/pages/Doctor-pages/Prescription';
+import Edit_Profile from './components/pages/Profile-pages/Edit_Profile';
 
 
 function App() {
@@ -106,6 +107,7 @@ function App() {
         
         <Route path='/profile' element={loginUser && loginUser._id && loginUser.hid ? <Profile user = {loginUser} /> : <Navigate to ='/' replace/>}/>
         <Route path='/print_card' element={ <Print_card user = {loginUser}/>}/>
+        <Route path='/edit_profile' element={ <Edit_Profile user = {loginUser}/>}/>
 
         <Route path='/search_profile' element={ <Search_profile user = {loginUser}/> }/>
 

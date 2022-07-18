@@ -1,5 +1,5 @@
 export const Client_ADDRESS =
-  "0x6e83Cb375aCfb2315Ef21B4eC2EfD8eb7DC724A8";
+  "0x4899c1aC0c96e24c868bc7dD5154e57b5171b2B1";
 
 export const Client_ABI = [
   {

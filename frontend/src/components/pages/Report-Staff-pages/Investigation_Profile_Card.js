@@ -26,7 +26,7 @@ function Investigation_Profile_Card(props) {
        monthString = monthDiff+" months ago."
       }
       else{
-        monthString = "Less than one month."
+        monthString = "Less than one month ago."
       }
 
   return (

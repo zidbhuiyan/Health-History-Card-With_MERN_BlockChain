@@ -747,12 +747,12 @@ function Info_Navbar(props) {
           <>
             <p>
               <button class="recordbtn" onClick={drugsButton}>
-                Add New Drugs
+                Add New Drug
               </button>
             </p>
             <br></br>
 
-            <h2 className="infoHead">Drugs History</h2>
+            <h2 className="infoHead">Drug History</h2>
             <div className="scorllTab">
               {drugsData
                 .map((drugsData, key) => (
@@ -930,7 +930,7 @@ function Info_Navbar(props) {
       } else if (value == 4) {
         return (
           <>
-            <h2 className="infoHead">Drugs History</h2>
+            <h2 className="infoHead">Drug History</h2>
             <div className="scorllTab">
               {drugsData
                 .map((drugsData, key) => (

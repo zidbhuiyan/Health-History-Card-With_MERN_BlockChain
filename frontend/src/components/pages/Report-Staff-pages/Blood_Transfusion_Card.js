@@ -24,7 +24,7 @@ function Blood_Transfusion_Card(props) {
        monthString = monthDiff+" months ago."
       }
       else{
-        monthString = "Less than one month."
+        monthString = "Less than one month ago."
       }
 
   return (
@@ -36,12 +36,12 @@ function Blood_Transfusion_Card(props) {
         </div>
         
       <div className="bloodTransfusionDiv">
-        <h4>Blood transfusion amount: {props.booldTransfusionData.booldtransfusionAmount}</h4>
-        <h4>Blood transfusion type: {props.booldTransfusionData.booldtransfusionType}</h4>
+        <h5>Amount: {props.booldTransfusionData.booldtransfusionAmount}</h5>
+        <h5>Type: {props.booldTransfusionData.booldtransfusionType}</h5>
       </div>
 
       <div className="vaccinestaffDiv">
-      <h5>Blood transfused by:</h5><h5> {props.booldTransfusionData.firstname} {props.booldTransfusionData.lastname} </h5>
+      <h5>Updated by:</h5><h5> {props.booldTransfusionData.firstname} {props.booldTransfusionData.lastname} </h5>
         <h5>{props.booldTransfusionData.hospitalname}</h5>
       </div>
 

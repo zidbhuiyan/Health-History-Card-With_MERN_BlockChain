@@ -48,7 +48,7 @@ function Vaccine_Staff_Navbar(props) {
          
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
           <div className='doctor-panel'>
-             Vaccine Staff Panel
+             Vaccine Staff's Panel
           </div>
           <li>
               <Link

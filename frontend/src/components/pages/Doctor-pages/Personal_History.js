@@ -48,6 +48,51 @@ function Personal_History(props) {
         "Occupational asthma",
       ],
     },
+    {
+      Id: "2",
+      problemName: "Stroke",
+      problemType: ["Ischemic stroke", "Hemorrhagic stroke",],
+    },
+    {
+      Id: "3",
+      problemName: "Heart Disease",
+      problemType: ["Coronary Artery Disease (CAD)", "Heart Arrhythmias", "Heart Failure","Heart Valve Disease","Pericardial Disease","Cardiomyopathy (Heart Muscle Disease)","Congenital Heart Disease"],
+    },
+    {
+      Id: "4",
+      problemName: "Cancer",
+      problemType: ["Carcinoma", "Sarcoma", "Myeloma","Leukemia","Lymphoma","Mixed types",],
+    },
+    {
+      Id: "5",
+      problemName: "Arithritis",
+      problemType: ["Osteoarthritis", "Rheumatoid Arthritis", "Gout","Fibromyalgia","Childhood Arthritis",],
+    },
+    {
+      Id: "6",
+      problemName: "Osteoporosis",
+      problemType: ["Primary Osteoporosis", "Secondary Osteoporosis", "Osteogenesis Imperfecta","Idiopathic Juvenile Osteoporosis",],
+    },
+    {
+      Id: "7",
+      problemName: "Eating Disorder",
+      problemType: ["Anorexia Nervosa", "Bulimia Nervosa", "Binge Eating",],
+    },
+    {
+      Id: "8",
+      problemName: "Oral disease",
+      problemType: ["Oral cancer", "Cavities", "Sensitive teeth", "Gingivitis", "Periodontitis",],
+    },
+    {
+      Id: "9",
+      problemName: "Sinusitis",
+      problemType: ["Acute sinusitis", "Chronic sinusitis", "Subacute sinusitis", ],
+    },
+    {
+      Id: "10",
+      problemName: "Migrane",
+      problemType: ["Chronic migraine", "Migraine with brainstem aura", "Vestibular migraine", "Abdominal migraine", "Hemiplegic migraine", "Menstrual migraine"],
+    },
   ];
 
   function handleChange(event) {

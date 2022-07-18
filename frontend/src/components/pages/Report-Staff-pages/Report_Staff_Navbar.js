@@ -50,7 +50,7 @@ function Report_Staff_Navbar( props ) {
          
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
           <div className='doctor-panel'>
-             Report Staff Panel
+             Report Staff's Panel
           </div>
           <li>
               <Link
@@ -77,7 +77,7 @@ function Report_Staff_Navbar( props ) {
             </li>
 
             <li>
-               <button class="login" onClick={logoutClick}>Logout</button>
+               <button class="login" onClick={logoutClick}>Log out</button>
             </li>
             
           </ul>

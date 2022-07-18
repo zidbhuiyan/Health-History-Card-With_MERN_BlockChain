@@ -29,7 +29,7 @@ function Vaccine_History(props) {
 
   var Id = "",
     vaccineName = "",
-    vaccineDisease = "Disease will apear here";
+    vaccineDisease = "Disease name";
 
   const vaccineDetails = [
     { Id: "0", vaccineName: "BCG", vaccineDisease: "Tuberculosis" },
@@ -136,7 +136,7 @@ function Vaccine_History(props) {
                     onChange={handleChange}
                   >
                     <option value="" disabled selected>
-                      Selelct vaccine name
+                      Select vaccine name
                     </option>
                     {vaccineDetails.map((vaccineDetail) => (
                       <option key={vaccineDetail.Id} value={vaccineDetail.Id}>
@@ -160,7 +160,7 @@ function Vaccine_History(props) {
                     onChange={handleChange}
                   >
                     <option value="" disabled selected>
-                      Select dose number
+                      Select the dose number
                     </option>
                     <option value="1st Dose">1st Dose</option>
                     <option value="2nd Dose">2nd Dose</option>

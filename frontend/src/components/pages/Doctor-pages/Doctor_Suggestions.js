@@ -111,7 +111,7 @@ function Doctor_Sugestions( props ) {
                   
                   <textarea onChange ={handleChange}
                     name= "Dsuggestions"
-                    placeholder="Please, type Your message here"
+                    placeholder="Please, type your message here.."
                     value={input.Dsuggestions}
                     cols="30"
                     rows="15"

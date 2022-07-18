@@ -113,7 +113,7 @@ function Contact() {
         <div class="box-container">
           <div class="box">
             <div class="content">
-              <h3>For any type of query, fill up this form!</h3>
+              <h3>For any type of query, please fill up this form!</h3>
               
               <div class="row">
                 <form id="contactForm" name="contactForm">

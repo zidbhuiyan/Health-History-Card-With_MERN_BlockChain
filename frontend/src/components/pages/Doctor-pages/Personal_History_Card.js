@@ -23,7 +23,7 @@ function Personal_History_Card(props) {
        monthString = monthDiff+" months ago."
       }
       else{
-        monthString = "Less than one month."
+        monthString = "Less than one month ago."
       }
   return (
     <>
@@ -34,8 +34,8 @@ function Personal_History_Card(props) {
         </div>
 
         <div className="bloodTransfusionDiv"> 
-         <p>Problem: {props.personalData.Problem}</p>
-          <p>Type: {props.personalData.ProblemType}</p>
+         <h5>Problem: {props.personalData.Problem}</h5>
+          <h5>Type: {props.personalData.ProblemType}</h5>
          
         </div>
 

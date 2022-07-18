@@ -129,7 +129,7 @@ function Family_History(props) {
             <form>
               <div class="user-details">
                 <div class="blood-input-box">
-                  <span class="details">Disease namwe:</span>
+                  <span class="details">Disease name:</span>
                   <select
                     name="disease"
                     value={input.disease}
@@ -156,7 +156,7 @@ function Family_History(props) {
                     onChange={handleChange}
                   >
                     <option value="" disabled selected>
-                      Select realation
+                      Select relation
                     </option>
                     {relation.map((relation) => (
                       <option key={relation} value={relation}>

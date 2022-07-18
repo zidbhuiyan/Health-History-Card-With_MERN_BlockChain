@@ -73,10 +73,10 @@ const Print_card = (props) => {
                     </div>
                         <p class="left">Phone Number:</p>
                         <p class="left_desi">{props.user.phonenumber}</p>
+                        <p class="left">Email:</p>
+                        <p class="left_desi">{props.user.email}</p>
                         <p class="left">Blood Group:</p>
                         <p class="left_desi">{props.user.bloodgroup}</p>
-                        <p class="left">Diseases:</p>
-                        <p class="left_desi">----</p>
                         <p class="center_desi"><b>Emergency Number</b></p>
                         <p class="center_desi">{props.user.phonenumber}</p>
                     </div>

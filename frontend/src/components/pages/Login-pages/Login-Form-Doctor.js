@@ -90,7 +90,7 @@ function Login_Form_Doctor(props) {
         
         <input type="submit" onClick={handleClick} value="Login"/>
         <div className="signup_link">
-        Not Registered? <Link to='/registration'>Register here</Link>
+        Not Registered? <Link to='/registration'>Register here!</Link>
         </div>
       </form>
     </div>

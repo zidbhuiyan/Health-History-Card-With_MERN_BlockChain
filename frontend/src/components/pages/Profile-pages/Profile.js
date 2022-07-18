@@ -3,13 +3,18 @@ import '../../../App.css';
 import './Profile.css'
 import Footer from '../../Footer';
 import Info_Navbar from '../../Info_Navbar';
+import { useNavigate } from "react-router-dom";
 import Navbar from '../../Navbar'; 
 
 
 const Profile = (props) => {
 
-  console.log(props.client);
-  console.log(props.doctorSuggestionsData);
+  const navigate = useNavigate();
+
+  function editbtnClick(event) {
+    event.preventDefault();
+    navigate("/edit_profile");
+  }
 
     return (
       <>
@@ -19,8 +24,8 @@ const Profile = (props) => {
         page = 'profile'/>
 
 <div class="container">
-  
-    <div class="title">Profile</div>
+    <div class="title">Profile  </div>
+    
     <div class="content">
       <form>
         <div class="user-details">
@@ -67,6 +72,7 @@ const Profile = (props) => {
           </div>
         </div>
       </form>
+      <div class="edit"><button class="cng" onClick={editbtnClick}>Edit Profile</button></div>
       <div class="title">Medical Information</div>
       <Info_Navbar
       userCat = "client"

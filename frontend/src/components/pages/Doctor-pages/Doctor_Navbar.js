@@ -50,7 +50,7 @@ function Doctor_Navbar(props) {
          
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
           <div className='doctor-panel'>
-              Doctor Panel
+              Doctor's Panel
           </div>
           <li>
               <Link

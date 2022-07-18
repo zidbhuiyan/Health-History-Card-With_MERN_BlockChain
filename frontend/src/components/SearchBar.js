@@ -77,7 +77,7 @@ function SearchBar(props) {
             className="searchinput"
             type="text"
             name="hid"
-            placeholder="Search Health Id of patient"
+            placeholder="Search Health ID of patient"
             onChange={handleChange}
             value={user.hid}
             required

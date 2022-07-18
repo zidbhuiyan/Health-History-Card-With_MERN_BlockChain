@@ -119,7 +119,7 @@ function Investigation_Profile(props) {
 
         <div class="container">
           <h1 class="suggheading">
-            <span>Invetstigation</span>
+            <span>Investigation</span>
             <span>&nbsp;</span>
             <span>Profile</span>
           </h1>
@@ -137,20 +137,20 @@ function Investigation_Profile(props) {
               {imageShow ? (
                 <div>
                   <div class="blood-input-box">
-                    <span class="details">Upload Image Here..</span>
+                    <span class="details">Upload Image here..</span>
                     <ImageUpload setUrl={setUrl} />
                   </div>
-                  <div>You must upload the image first then save it</div>
+                  <div>You must upload the image first to save it</div>
                 </div>
               ) : null}
 
               {pdfShow ? (
                 <div>
                   <div class="blood-input-box">
-                    <span class="details">Upload Pdf Here..</span>
+                    <span class="details">Upload Pdf here..</span>
                     <PdfUpload setUrl={setUrl} />
                   </div>
-                  <div>You must upload the image pdf then save it</div>
+                  <div>You must upload the pdf first to save it</div>
                   <div>
                     
                   </div>
