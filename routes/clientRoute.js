@@ -80,4 +80,94 @@ router.route("/create1").post((req, res) =>{
 
 })
 
+router.route("/updateEmail").post((req, res) =>{
+
+    const hid = req.body.hid;
+    const email = req.body.email;
+
+    Client.updateOne({hid},{
+        $set:{
+            email,
+        }
+    }, (err,newEmail)=>{
+        if(err){
+            res.send(err)
+        }
+        else{
+            Client.findOne({hid: hid}, (err,user) => {
+                res.send({message: "updateEmailDone", user: user})
+            })
+        }
+    })
+
+})
+
+router.route("/updatePhoneNumber").post((req, res) =>{
+
+    const hid = req.body.hid;
+    const phonenumber = req.body.phonenumber;
+
+    Client.updateOne({hid},{
+        $set:{
+            phonenumber,
+        }
+    }, (err,newPhonenumber)=>{
+        if(err){
+            res.send(err)
+        }
+        else{
+            Client.findOne({hid: hid}, (err,user) => {
+                res.send({message: "updatePhoneDone", user: user})
+            })
+        }
+    })
+
+})
+
+router.route("/updatePassword").post((req, res) =>{
+
+    const hid = req.body.hid;
+    const password = req.body.password;
+    const newpassword = req.body.newpassword;
+
+    console.log(password);
+    console.log(newpassword);
+
+    Client.findOne({hid: hid}, (err,user) => {
+        if(user){
+            bcrypt.compare(password,user.password)
+            .then(passMatch=>{
+                
+                if(passMatch){
+
+                    bcrypt.hash(newpassword,12)
+                    .then(hashedpassword=>{
+                        console.log(hashedpassword);
+
+                        Client.updateOne({hid},{
+                            $set:{
+                                password:hashedpassword,
+                                confirmpassword: hashedpassword,
+                            }
+                        }, (err,newPassword)=>{
+                            if(err){
+                                res.send(err)
+                            }
+                            else{
+                                res.send({message: "passwordisChanged"}) 
+                            }
+                        })
+                    })
+                    
+                }
+    
+                else{
+                    res.send({message: "passwordisIncorrect"}) 
+                }
+            })
+        }
+    })
+
+})
+
 module.exports = router;

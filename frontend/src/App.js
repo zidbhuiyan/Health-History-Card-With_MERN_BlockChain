@@ -107,7 +107,7 @@ function App() {
         
         <Route path='/profile' element={loginUser && loginUser._id && loginUser.hid ? <Profile user = {loginUser} /> : <Navigate to ='/' replace/>}/>
         <Route path='/print_card' element={ <Print_card user = {loginUser}/>}/>
-        <Route path='/edit_profile' element={ <Edit_Profile user = {loginUser}/>}/>
+        <Route path='/edit_profile' element={ <Edit_Profile user = {loginUser} updateUser={updateUser}/>}/>
 
         <Route path='/search_profile' element={ <Search_profile user = {loginUser}/> }/>
 

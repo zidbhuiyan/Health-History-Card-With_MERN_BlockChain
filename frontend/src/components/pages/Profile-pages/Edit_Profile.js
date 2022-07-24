@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import "../../../App.css";
 import "./Profile.css";
 import Footer from "../../Footer";
+import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../Navbar";
+import swal from 'sweetalert';
 
 const Edit_Profile = (props) => {
   const navigate = useNavigate();
@@ -42,17 +44,143 @@ const Edit_Profile = (props) => {
 
   function updateEmailbtn(event){
     event.preventDefault();
-    console.log(email);
+    
+    const updateEmail ={
+      hid: props.user.hid,
+      email: email.email,
+    }
+
+    console.log(updateEmail);
+
+    var result = "";
+
+    if(email.email){
+      axios.post('http://localhost:3001/updateEmail', updateEmail).then(res=>{
+        console.log(res.data.user);
+        console.log(res.data.message);
+  
+        result = (res.data.message)
+        props.updateUser(res.data.user)
+  
+        if(result == "updateEmailDone"){
+          swal({
+            title: "Email updated",
+            text: "Please, check your new email",
+            icon: "success",
+            button: "Okay",
+          }).then((done) => {
+            if (done) {
+              navigate("/profile");
+            }
+          });
+        }
+       
+      })
+    }  
+
   }
 
   function updatePhonebtn(event){
     event.preventDefault();
-    console.log(phonenumber);
+
+    const updatePhoneNumber ={
+      hid: props.user.hid,
+      phonenumber: phonenumber.phonenumber,
+    }
+
+    console.log(updatePhoneNumber);
+
+    var result = "";
+
+    if(phonenumber.phonenumber){
+
+      axios.post('http://localhost:3001/updatePhoneNumber', updatePhoneNumber).then(res=>{
+        console.log(res.data.user);
+        console.log(res.data.message);
+  
+        result = (res.data.message)
+        props.updateUser(res.data.user)
+  
+        if(result == "updatePhoneDone"){
+          swal({
+            title: "Phone number updated",
+            text: "Please, check your new number",
+            icon: "success",
+            button: "Okay",
+          }).then((done) => {
+            if (done) {
+              navigate("/profile");
+            }
+          });
+        }
+       
+      })
+
+    }
   }
 
   function updatePasswordbtn(event){
     event.preventDefault();
-    console.log(password);
+    const updatePassword ={
+      hid: props.user.hid,
+      password: password.password,
+      newpassword: password.newpassword,
+    }
+   
+    var result = "";
+
+    if(password.password && password.newpassword && password.confirmpassword){
+
+      if(password.newpassword.length > 6){
+        
+        if(password.newpassword === password.confirmpassword){
+
+        axios.post('http://localhost:3001/updatePassword', updatePassword).then(res=>{
+          console.log(res.data.message);
+    
+          result = (res.data.message)
+    
+          if(result == "passwordisChanged"){
+            swal({
+              title: "Password is changed",
+              icon: "success",
+              button: "Okay",
+            }).then((done) => {
+              if (done) {
+                navigate("/profile");
+              }
+            });
+          }
+
+          else if(result == "passwordisIncorrect"){
+            swal({
+              title: "Password is Incorrect",
+              icon: "warning",
+              button: "Okay",
+            })
+          }
+         
+        })
+          
+        }
+        else{
+          swal({
+            title: "Confirm password doesn't match",
+            icon: "warning",
+            button: "Okay",
+          })
+        }
+
+      }
+      else{
+        swal({
+          title: "At least 6 characters required for password!",
+          icon: "warning",
+          button: "Okay",
+        })
+      }
+
+    }
   }
 
 
@@ -135,9 +263,18 @@ const Edit_Profile = (props) => {
               {passwordShow ? (
                 <div>
                   <form>
+                  <div class="phone-input-box">
+                      <span class="details">Password</span>
+                      <input type="password" name="password" value={password.password} placeholder="Enter password" id="password" onChange={ handlePasswordChange } required/>
+                    </div>
                     <div class="phone-input-box">
                       <span class="details">New Password</span>
-                      <input type="password" name="password" value={password.password} placeholder="Enter password" id="password" onChange={ handlePasswordChange } required/>
+                      <input type="password" name="newpassword" value={password.newpassword} placeholder="Enter new password" id="newpassword" onChange={ handlePasswordChange } required/>
+                    </div>
+
+                    <div class="phone-input-box">
+                      <span class="details">Confirm New Password</span>
+                      <input type="password" name="confirmpassword" value={password.confirmpassword} placeholder="Enter new password" id="confirmpassword" onChange={ handlePasswordChange } required/>
                     </div>
                     <div>
                       <button onClick={updatePasswordbtn} class="login">Update</button>
